@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./js/header.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body class="bg-stone-800">
+    <header class="h-24 md:h-20 lg:h-16 bg-stone-800">
+        <div class="h-24 md:h-20 lg:h-16 w-11/12 lg:max-w-6xl mx-auto flex justify-between items-center align-middle">
+          <button type="button" class="text-white fa fa-bars fa-2x lg:hidden" id="hamburgerMenu"></button>
+          <a href="index.html">
+            <img src="./img/LOGO.svg" alt="logo" />
+          </a>
+          <nav class="hidden lg:flex">
+            <ul class="flex align-middle text-white">
+              <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
+              <li class="text-lg mx-5 hover:underline"><a href="#">Profile</a></li>
+              <li class="text-lg mx-5 hover:underline"><a href="#">Products</a></li>
+              <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
+              <li id="searchBar" class="opacity-0">
+                <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
+                <button type="button" class="bg-sky-900 px-2 py-1 rounded-lg">Search</button>
+              </li>
+            </ul>
+          </nav>
+          <div class="lg:flex">
+            <a href="#">
+              <img src="./img/profile-pic.png" alt="profile-pic" class="h-10 rounded-full" />
+            </a>
+            <div class="flex flex-col items-center lg:ml-2">
+              <p class="text-white">1000$</p>
+              <button type="button" class="text-white mr-2 hidden lg:block hover:underline">Log out</button>
+            </div>
+          </div>
+        </div>
+        <nav id="navLinksMobile" class="lg:hidden text-white bg-pink-700 hidden">
+          <ul class="w-11/12 mx-auto p-6">
+            <li class="flex flex-row">
+              <input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /><button
+                type="button"
+                class="bg-sky-900 px-2 py-1 rounded-lg"
+              >
+                Search
+              </button>
+            </li>
+            <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
+            <li class="my-6 text-xl hover:underline"><a href="#">Profile</a></li>
+            <li class="my-6 text-xl hover:underline"><a href="#">Products</a></li>
+            <li class="my-6 text-xl"><button type="button" class="hover:underline">Log Out</button></li>
+          </ul>
+        </nav>
+      </header>
+    <main>
+      <div
+        class="mt-8 w-11/12 lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse"
+      >
+        <div class="text-white flex flex-col md:w-1/2 md:ml-8">
+          <h1 class="text-3xl lg:text-5xl mx-auto">Art Collection</h1>
+          <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
+            <p>Standing bid:</p>
+            <p>34$</p>
+          </div>
+          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
+          <p class="mr-2 font-semibold">Sold by:</p>
+          <p>Petter Pettersen</p>
+        </div>
+          <p class="mt-4 lg:w-72 mx-auto">
+            Collection of modern art consisting of 7 paintings painted by some person. Something about where they are
+            from or something, maybe just filler text
+          </p>
+          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
+            <p class="mr-4 font-semibold">Tags:</p>
+            <p>#art #artzy</p>
+          </div>
+          <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
+          <div class="flex w-full max-w-xs md:w-2/3 xl:w-1/2 mx-auto justify-between text-stone-400">
+            <div class="flex flex-col items-center">
+              <div class="flex gap-1">
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">0</p>
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">5</p>
+              </div>
+              <p>Days</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="flex gap-1">
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">1</p>
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">7</p>
+              </div>
+              <p>Hours</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="flex gap-1">
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">2</p>
+                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">8</p>
+              </div>
+              <p>Minutes</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="flex items-center w-48 lg:w-72 mx-auto mt-8 bg-green-800 hover:bg-green-900 p-2 rounded-xl"
+          >
+            <input type="number" value="35" class="text-black p-1 w-12 rounded-md" />
+            <p class="px-8 lg:px-20">Place bid</p>
+          </button>
+        </div>
+        <img
+          src="./img/art-img.png"
+          alt="art collection"
+          class="mt-8 md:mt-0 rounded-xl w-3/4 mx-auto md:w-1/2 md:h-full md:max-h-96 md:max-w-sm lg:max-w-none lg:max-h-screen"
+        />
+      </div>
+    </main>
+    <footer class="h-72 mt-12 bg-stone-900">
+      <div class="flex justify-center flex-col items-center">
+        <img src="./img/LOGO.svg" alt="logo" class="h-24" />
+        <p class="text-white italic">Spend Less, Get More</p>
+      </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6">
+        <a href="/index.html" class="hover:underline">Home</a>
+        <div class="flex flex-col">
+          <a href="#" class="hover:underline">Profile</a>
+          <a href="#" class="mt-3 hover:underline">My bids</a>
+          <button type="button" class="mt-3 hover:underline">Log Out</button>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -18,12 +18,12 @@
         </a>
         <nav class="hidden lg:flex">
           <ul class="flex align-middle text-white">
-            <li class="text-lg mx-5"><a href="#">Home</a></li>
-            <li class="text-lg mx-5"><a href="#">Profile</a></li>
-            <li class="text-lg mx-5"><a href="#">Products</a></li>
-            <li class="text-lg mx-5"><button type="button" id="searchBtn">Search</button></li>
+            <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="#">Profile</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="#">Products</a></li>
+            <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
             <li id="searchBar" class="opacity-0">
-              <input type="search" placeholder="Search..." class="rounded p-1 ml-5 w-72 text-black" />
+              <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
               <button type="button" class="bg-sky-900 px-2 py-1 rounded-lg">Search</button>
             </li>
           </ul>
@@ -32,15 +32,26 @@
           <a href="#">
             <img src="./img/profile-pic.png" alt="profile-pic" class="h-10 rounded-full" />
           </a>
-          <p class="text-white lg:ml-2">1000$</p>
+          <div class="flex flex-col items-center lg:ml-2">
+            <p class="text-white">1000$</p>
+            <button type="button" class="text-white mr-2 hidden lg:block hover:underline">Log out</button>
+          </div>
         </div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden">
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-pink-700 hidden">
         <ul class="w-11/12 mx-auto p-6">
-          <li><input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /></li>
-          <li class="my-6 text-xl"><a href="#">Home</a></li>
-          <li class="my-6 text-xl"><a href="#">Profile</a></li>
-          <li class="my-6 text-xl"><a href="#">Products</a></li>
+          <li class="flex flex-row">
+            <input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /><button
+              type="button"
+              class="bg-sky-900 px-2 py-1 rounded-lg"
+            >
+              Search
+            </button>
+          </li>
+          <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
+          <li class="my-6 text-xl hover:underline"><a href="#">Profile</a></li>
+          <li class="my-6 text-xl hover:underline"><a href="#">Products</a></li>
+          <li class="my-6 text-xl"><button type="button" class="hover:underline">Log Out</button></li>
         </ul>
       </nav>
     </header>
@@ -48,23 +59,23 @@
       <div class="bg-hero-banner bg-cover h-64 md:h-72 lg:h-[500px] flex justify-center">
         <div class="flex flex-col items-center mt-8 lg:mt-24">
           <img src="./img/LOGO.svg" alt="logo" class="h-24 lg:h-40" />
-          <p class="text-white text-lg lg:text-xl">Spend less, Get more</p>
+          <p class="text-white text-lg lg:text-xl italic">Spend less, Get more</p>
         </div>
       </div>
       <div class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline">
         <p class="text-xl">Products</p>
         <div class="flex flex-col md:flex-row">
           <p>Sort by:</p>
-          <select name="filter" id="filter" class="text-black md:ml-2">
+          <select name="filter" id="filter" class="text-black md:ml-2 mt-2 md:mt-0">
             <option value="Created">Created</option>
             <option value="Updated">Updated</option>
           </select>
-          <div class="flex">
+          <div class="flex flex-col md:flex-row mt-2 md:mt-0">
             <div class="flex md:mx-5">
               <label for="newToOld">Newest-oldest</label>
               <input type="radio" name="newToOld" id="newToOld" />
             </div>
-            <div>
+            <div class="mt-2 md:mt-0">
               <label for="oldToNew">Oldest-Newest</label>
               <input type="radio" name="oldToNew" id="oldToNew" />
             </div>
@@ -83,7 +94,7 @@
           >
             <p class="text-xl py-3">Art Collection</p>
             <p>Standing bid: 35$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <a href="./details.html" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
         <div class="flex md:flex-col justify-center mt-12">
@@ -242,6 +253,19 @@
         </div>
       </div>
     </main>
-    <footer></footer>
+    <footer class="h-72 mt-12 bg-stone-900">
+      <div class="flex justify-center flex-col items-center">
+        <img src="./img/LOGO.svg" alt="logo" class="h-24" />
+        <p class="text-white italic">Spend Less, Get More</p>
+      </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6">
+        <a href="/index.html" class="hover:underline">Home</a>
+        <div class="flex flex-col">
+          <a href="#" class="hover:underline">Profile</a>
+          <a href="#" class="mt-3 hover:underline">My bids</a>
+          <button type="button" class="mt-3 hover:underline">Log Out</button>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
