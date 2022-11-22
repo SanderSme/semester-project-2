@@ -19,7 +19,7 @@
         <nav class="hidden lg:flex">
           <ul class="flex align-middle text-white">
             <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
-            <li class="text-lg mx-5 hover:underline"><a href="#">Profile</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="login.html">Profile</a></li>
             <li class="text-lg mx-5 hover:underline"><a href="#">Products</a></li>
             <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
             <li id="searchBar" class="opacity-0">
@@ -56,64 +56,66 @@
       </nav>
     </header>
     <main class="mb-8">
-      <div
-        class="mt-8 w-11/12 lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse"
-      >
-        <div class="text-white flex flex-col md:w-1/2 md:ml-8">
-          <h1 class="text-3xl lg:text-5xl mx-auto">Art Collection</h1>
-          <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
-            <p>Standing bid:</p>
-            <p>34$</p>
-          </div>
-          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
-            <p class="mr-2 font-semibold">Sold by:</p>
-            <p>Petter Pettersen</p>
-          </div>
-          <p class="mt-4 lg:w-72 mx-auto">
-            Collection of modern art consisting of 7 paintings painted by some person. Something about where they are
-            from or something, maybe just filler text
-          </p>
-          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
-            <p class="mr-4 font-semibold">Tags:</p>
-            <p>#art #artzy</p>
-          </div>
-          <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
-          <div class="flex max-w-xs md:w-2/3 xl:w-1/2 mx-auto gap-5 text-stone-400">
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">0</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">5</p>
+      <div class="w-11/12 lg:max-w-6xl mx-auto bg-[#001321] p-8 rounded-xl mt-8">
+        <form id="listItemForm" class="text-white flex flex-col">
+            <h1 class="text-2xl mx-auto font-semibold">List your item</h1>
+          <div class="flex flex-col md:flex-row md:gap-5 mt-8">
+            <div class=" w-full md:w-1/2 p-4 mx-auto md:mx-0 bg-stone-700 rounded-xl flex flex-col justify-center">
+              <div class="fa fa-photo fa-5x text-stone-500 mx-auto"></div>
+              <div class="w-full mx-auto flex flex-col mt-4">
+                <label for="image" class="text-white p-1">Image URL (optional)</label>
+                <input
+                  type="url"
+                  name="image"
+                  id="image"
+                  accept="image/png, image/jpeg"
+                  placeholder="Paste url here"
+                  class="text-black p-1 rounded-lg"
+                />
               </div>
-              <p>Days</p>
             </div>
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">1</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">7</p>
+            <div class="md:w-1/2">
+              <div class="flex flex-col mx-auto w-full mt-4 md:mt-0">
+                <label for="title" class="p-1 md:pt-0">Title (required)</label>
+                <input type="text" name="title" id="title" class="text-black p-1 rounded-lg" />
+                <p id="titleErrorMessage" class="text-red-600 hidden">Title is required</p>
               </div>
-              <p>Hours</p>
-            </div>
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">2</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">8</p>
+              <div class="flex flex-col mx-auto w-full mt-4">
+                <label for="description" class="p-1">Description (required)</label>
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="7"
+                  class="text-black p-1 rounded-lg"
+                ></textarea>
+                <p id="titleErrorMessage" class="text-red-600 hidden">Title is required</p>
               </div>
-              <p>Minutes</p>
+              <div class="flex flex-col mx-auto w-full mt-4">
+                <label for="tags" class="p-1">Tags (optional)</label>
+                <input type="text" name="tags" id="tags" class="text-black p-1 rounded-lg" />
+              </div>
+              <div class="flex flex-row gap-5 mx-auto mt-8">
+                <label for="startingBid" class="p-1">Starting bid: </label>
+                <input
+                  type="number"
+                  value="1"
+                  name="startingBid"
+                  id="startingBid"
+                  class="text-black p-1 rounded-lg w-14"
+                />
+              </div>
             </div>
           </div>
-          <button
-            type="button"
-            class="flex items-center w-48 lg:w-72 mx-auto mt-8 bg-green-800 hover:bg-green-900 p-2 rounded-xl"
-          >
-            <input type="number" value="35" class="text-black p-1 w-12 rounded-md" />
-            <p class="px-8 lg:px-20">Place bid</p>
-          </button>
-        </div>
-        <img
-          src="./img/art-img.png"
-          alt="art collection"
-          class="mt-8 md:mt-0 rounded-xl w-3/4 mx-auto md:w-1/2 md:h-full md:max-h-96 md:max-w-sm lg:max-w-none lg:max-h-screen"
-        />
+          <div class="flex flex-col mt-4 md:mx-auto">
+            <label for="auctionEnds" class="p-1">Auction ends:</label>
+            <div class="flex flex-row gap-5">
+                <input type="date" class="text-black p-1 rounded-lg">
+                <input type="time" class="text-black p-1 rounded-lg">
+            </div>
+          </div>
+          <button type="submit" class="mt-8 py-2 w-1/2 md:w-1/3 lg:w-1/4 mx-auto bg-green-800 hover:bg-green-900 p-2 rounded-xl">List Item</button>
+        </form>
       </div>
     </main>
     <footer class="h-72 mt-auto bg-stone-900">

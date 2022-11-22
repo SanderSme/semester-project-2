@@ -9,7 +9,7 @@
     <script type="module" src="./js/header.js" defer></script>
     <title>Document</title>
   </head>
-  <body class="bg-stone-800">
+  <body class="bg-stone-800 flex flex-col min-h-screen">
     <header class="h-24 md:h-20 lg:h-16 bg-stone-800">
       <div class="h-24 md:h-20 lg:h-16 w-11/12 lg:max-w-6xl mx-auto flex justify-between items-center align-middle">
         <button type="button" class="text-white fa fa-bars fa-2x lg:hidden" id="hamburgerMenu"></button>
@@ -19,8 +19,8 @@
         <nav class="hidden lg:flex">
           <ul class="flex align-middle text-white">
             <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
-            <li class="text-lg mx-5 hover:underline"><a href="#">Profile</a></li>
-            <li class="text-lg mx-5 hover:underline"><a href="#">Products</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="login.html">Profile</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="list-item.html">Products</a></li>
             <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
             <li id="searchBar" class="opacity-0">
               <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-pink-700 hidden">
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full">
         <ul class="w-11/12 mx-auto p-6">
           <li class="flex flex-row">
             <input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /><button
@@ -55,14 +55,14 @@
         </ul>
       </nav>
     </header>
-    <main>
+    <main class="mb-8">
       <div class="bg-hero-banner bg-cover h-64 md:h-72 lg:h-[500px] flex justify-center">
         <div class="flex flex-col items-center mt-8 lg:mt-24">
           <img src="./img/LOGO.svg" alt="logo" class="h-24 lg:h-40" />
           <p class="text-white text-lg lg:text-xl italic">Spend less, Get more</p>
         </div>
       </div>
-      <div class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline">
+      <div class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline border-b border-b-stone-600 pb-2">
         <p class="text-xl">Products</p>
         <div class="flex flex-col md:flex-row">
           <p>Sort by:</p>
@@ -253,7 +253,7 @@
         </div>
       </div>
     </main>
-    <footer class="h-72 mt-12 bg-stone-900">
+    <footer class="h-72 mt-auto bg-stone-900">
       <div class="flex justify-center flex-col items-center">
         <img src="./img/LOGO.svg" alt="logo" class="h-24" />
         <p class="text-white italic">Spend Less, Get More</p>
