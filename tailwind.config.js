@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./*.{html,js}'],
+  content: ['./*.{html,js}', './js/*.js'],
 
   theme: {
     screens: {
@@ -25,5 +25,5 @@ module.exports = {
     },
   },
 
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true })],
 };

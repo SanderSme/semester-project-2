@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./js/components/header.js" defer></script>
+    <script type="module" src="./js/components/scrollbar.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body class="bg-stone-800 flex flex-col min-h-screen">
+    <header class="h-24 md:h-20 lg:h-16 bg-stone-800">
+      <div class="h-24 md:h-20 lg:h-16 w-11/12 lg:max-w-6xl mx-auto flex justify-between items-center align-middle">
+        <button type="button" class="text-white fa fa-bars fa-2x lg:hidden" id="hamburgerMenu"></button>
+        <a href="index.html">
+          <img src="./img/LOGO.svg" alt="logo" />
+        </a>
+        <nav class="hidden lg:flex">
+          <ul class="flex align-middle text-white">
+            <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="login.html">Profile</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="list-item.html">Products</a></li>
+            <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
+            <li id="searchBar" class="opacity-0">
+              <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
+              <button type="button" class="bg-sky-900 px-2 py-1 rounded-lg">Search</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="lg:flex">
+          <a href="#">
+            <img src="./img/profile-pic.png" alt="profile-pic" class="h-10 rounded-full" />
+          </a>
+          <div class="flex flex-col items-center lg:ml-2">
+            <p class="text-white">1000c</p>
+            <button type="button" class="text-white mr-2 hidden lg:block hover:underline">Log out</button>
+          </div>
+        </div>
+      </div>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full">
+        <ul class="w-11/12 mx-auto p-6">
+          <li class="flex flex-row">
+            <input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /><button
+              type="button"
+              class="bg-sky-900 px-2 py-1 rounded-lg"
+            >
+              Search
+            </button>
+          </li>
+          <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
+          <li class="my-6 text-xl hover:underline"><a href="#">Profile</a></li>
+          <li class="my-6 text-xl hover:underline"><a href="#">Products</a></li>
+          <li class="my-6 text-xl"><button type="button" class="hover:underline">Log Out</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="mb-32">
+      <div class="h-auto md:h-80 bg-[#001321] flex relative text-white">
+        <div
+          class="w-11/12 lg:max-w-6xl mx-auto flex flex-col md:flex-row z-10 mt-12 md:my-auto items-center gap-5 md:gap-12"
+        >
+          <img src="./img/profile-pic.png" alt="profile-pic" class="rounded-full h-52" />
+          <div class="text-xl flex flex-col gap-4">
+            <p>Sander Smedbøl</p>
+            <p class="underline">sansme55951@stud.noroff.no</p>
+            <div class="flex gap-2">
+              <p>Credits:</p>
+              <p>1000 c</p>
+            </div>
+            <button
+              type="button"
+              class="w-1/2 py-2 px-8 bg-sky-900 rounded-lg text-sm place-self-center md:place-self-start"
+            >
+              Edit Profile
+            </button>
+          </div>
+        </div>
+        <div class="absolute h-80 w-full bg-gradient-to-b from-[#001321] to-stone-800 top-56 z-0"></div>
+      </div>
+      <div class="text-white w-11/12 lg:max-w-6xl mx-auto flex mt-16">
+        <p class="z-40 w-full border-b border-b-stone-600 p-2">My listings</p>
+      </div>
+      <div
+        class="flex w-11/12 lg:max-w-6xl mx-auto overflow-x-auto hover:scrollbar scrollbar-thumb-stone-500 scrollbar-track-stone-900 scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track"
+        id="myListingsContainer"
+      >
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
+        >
+          <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
+            <img
+              src="./img/art-img.png"
+              alt="art-collection"
+              class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+            />
+            <div
+              class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            >
+              <p class="text-lg py-1">Art Collection</p>
+              <p class="text-sm md:mt-2">Standing bid: 35$</p>
+              <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-white w-11/12 lg:max-w-6xl mx-auto flex mt-16">
+        <p class="z-40 w-full border-b border-b-stone-600 p-2">My bids</p>
+      </div>
+      <div class="md:flex md:justify-between md:flex-wrap md:gap-4 w-11/12 lg:max-w-6xl mx-auto">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px] z-40">
+          <img
+            src="./img/art-img.png"
+            alt="art-collection"
+            class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+          />
+          <div
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          >
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+          </div>
+        </div>
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px] z-40">
+          <img
+            src="./img/art-img.png"
+            alt="art-collection"
+            class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+          />
+          <div
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          >
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+          </div>
+        </div>
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px] z-40">
+          <img
+            src="./img/art-img.png"
+            alt="art-collection"
+            class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+          />
+          <div
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          >
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+          </div>
+        </div>
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px] z-40">
+          <img
+            src="./img/art-img.png"
+            alt="art-collection"
+            class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
+          />
+          <div
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          >
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="h-72 mt-auto bg-stone-900">
+      <div class="flex justify-center flex-col items-center">
+        <img src="./img/LOGO.svg" alt="logo" class="h-24" />
+        <p class="text-white italic">Spend Less, Get More</p>
+      </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6">
+        <a href="/index.html" class="hover:underline">Home</a>
+        <div class="flex flex-col">
+          <a href="#" class="hover:underline">Profile</a>
+          <a href="#" class="mt-3 hover:underline">My bids</a>
+          <button type="button" class="mt-3 hover:underline">Log Out</button>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

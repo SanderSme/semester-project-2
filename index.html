@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script type="module" src="./main.js" defer></script>
-    <script type="module" src="./js/header.js" defer></script>
+    <script type="module" src="./js/components/header.js" defer></script>
     <title>Document</title>
   </head>
   <body class="bg-stone-800 flex flex-col min-h-screen">
@@ -29,11 +29,11 @@
           </ul>
         </nav>
         <div class="lg:flex">
-          <a href="#">
+          <a href="profile.html">
             <img src="./img/profile-pic.png" alt="profile-pic" class="h-10 rounded-full" />
           </a>
           <div class="flex flex-col items-center lg:ml-2">
-            <p class="text-white">1000$</p>
+            <p class="text-white">1000c</p>
             <button type="button" class="text-white mr-2 hidden lg:block hover:underline">Log out</button>
           </div>
         </div>
@@ -55,14 +55,16 @@
         </ul>
       </nav>
     </header>
-    <main class="mb-8">
+    <main class="mb-32">
       <div class="bg-hero-banner bg-cover h-64 md:h-72 lg:h-[500px] flex justify-center">
         <div class="flex flex-col items-center mt-8 lg:mt-24">
           <img src="./img/LOGO.svg" alt="logo" class="h-24 lg:h-40" />
           <p class="text-white text-lg lg:text-xl italic">Spend less, Get more</p>
         </div>
       </div>
-      <div class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline border-b border-b-stone-600 pb-2">
+      <div
+        class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline border-b border-b-stone-600 p-2"
+      >
         <p class="text-xl">Products</p>
         <div class="flex flex-col md:flex-row">
           <p>Sort by:</p>
@@ -83,172 +85,172 @@
         </div>
       </div>
       <div class="md:flex md:justify-between md:flex-wrap md:gap-4 w-11/12 lg:max-w-6xl mx-auto">
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
             src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Art Collection</p>
-            <p>Standing bid: 35$</p>
-            <a href="./details.html" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/car-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Vintage Car</p>
-            <p>Standing bid: 41$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
-        <div class="flex md:flex-col justify-center mt-12">
+        <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           <img
-            src="./img/watch-img.png"
+            src="./img/art-img.png"
             alt="art-collection"
             class="h-48 lg:h-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none"
           />
           <div
-            class="text-white bg-[#001321] flex flex-col items-center px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-xl py-3">Watch</p>
-            <p>Standing bid: 26$</p>
-            <a href="#" class="place-self-center mt-14 md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
+            <p class="text-lg py-1">Art Collection</p>
+            <p class="text-sm md:mt-2">Standing bid: 35$</p>
+            <a href="./details.html" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
       </div>
