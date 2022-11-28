@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./js/main.js" defer></script>
     <script type="module" src="./js/components/header.js" defer></script>
     <script type="module" src="./js/components/scrollbar.js" defer></script>
+    <script type="module" src="./js/components/createHeader.js" defer></script>
     <title>Document</title>
   </head>
   <body class="bg-stone-800 flex flex-col min-h-screen">
@@ -17,11 +18,11 @@
         <a href="index.html">
           <img src="./img/LOGO.svg" alt="logo" />
         </a>
-        <nav class="hidden lg:flex">
+        <nav class="hidden lg:flex" id="navLinksDesktop">
           <ul class="flex align-middle text-white">
             <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
-            <li class="text-lg mx-5 hover:underline"><a href="login.html">Profile</a></li>
-            <li class="text-lg mx-5 hover:underline"><a href="list-item.html">Products</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="profile.html">Profile</a></li>
+            <li class="text-lg mx-5 hover:underline"><a href="list-item.html">List Item</a></li>
             <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
             <li id="searchBar" class="opacity-0">
               <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
@@ -29,31 +30,10 @@
             </li>
           </ul>
         </nav>
-        <div class="lg:flex">
-          <a href="#">
-            <img src="./img/profile-pic.png" alt="profile-pic" class="h-10 rounded-full" />
-          </a>
-          <div class="flex flex-col items-center lg:ml-2">
-            <p class="text-white">1000c</p>
-            <button type="button" class="text-white mr-2 hidden lg:block hover:underline">Log out</button>
-          </div>
+        <div class="lg:flex" id="headerUserInfo">
         </div>
       </div>
       <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full">
-        <ul class="w-11/12 mx-auto p-6">
-          <li class="flex flex-row">
-            <input type="search" placeholder="Search..." class="rounded w-full p-1 text-black" /><button
-              type="button"
-              class="bg-sky-900 px-2 py-1 rounded-lg"
-            >
-              Search
-            </button>
-          </li>
-          <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
-          <li class="my-6 text-xl hover:underline"><a href="#">Profile</a></li>
-          <li class="my-6 text-xl hover:underline"><a href="#">Products</a></li>
-          <li class="my-6 text-xl"><button type="button" class="hover:underline">Log Out</button></li>
-        </ul>
       </nav>
     </header>
     <main class="mb-32">
@@ -298,13 +278,7 @@
         <img src="./img/LOGO.svg" alt="logo" class="h-24" />
         <p class="text-white italic">Spend Less, Get More</p>
       </div>
-      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6">
-        <a href="/index.html" class="hover:underline">Home</a>
-        <div class="flex flex-col">
-          <a href="#" class="hover:underline">Profile</a>
-          <a href="#" class="mt-3 hover:underline">My bids</a>
-          <button type="button" class="mt-3 hover:underline">Log Out</button>
-        </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6" id="footerContent">
       </div>
     </footer>
   </body>

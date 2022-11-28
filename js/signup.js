@@ -97,7 +97,7 @@ signUpForm.addEventListener("submit", function (event) {
         });
         if (response.ok) {
           const data = await response.json();
-        //   location.href = "../login.html";
+          location.href = "../login.html";
         console.log(data);
         } else {
           const err = await response.json();
