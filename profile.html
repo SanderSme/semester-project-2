@@ -30,18 +30,19 @@
             </li>
           </ul>
         </nav>
-        <div class="lg:flex" id="headerUserInfo">
-        </div>
+        <div class="lg:flex" id="headerUserInfo"></div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full">
-      </nav>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full"></nav>
     </header>
     <main class="mb-32">
       <div class="h-auto md:h-80 bg-[#001321] flex relative text-white">
         <div
           class="w-11/12 lg:max-w-6xl mx-auto flex flex-col md:flex-row z-10 mt-12 md:my-auto items-center gap-5 md:gap-12"
         >
-          <img src="./img/profile-pic.png" alt="profile-pic" class="rounded-full h-52" />
+          <div>
+            <img src="./img/profile-pic.png" alt="profile-pic" class="rounded-full h-52" />
+            <p class="text-center mt-2">Change Avatar</p>
+          </div>
           <div class="text-xl flex flex-col gap-4">
             <p>Sander Smedbøl</p>
             <p class="underline">sansme55951@stud.noroff.no</p>
@@ -49,12 +50,6 @@
               <p>Credits:</p>
               <p>1000 c</p>
             </div>
-            <button
-              type="button"
-              class="w-1/2 py-2 px-8 bg-sky-900 rounded-lg text-sm place-self-center md:place-self-start"
-            >
-              Edit Profile
-            </button>
           </div>
         </div>
         <div class="absolute h-80 w-full bg-gradient-to-b from-[#001321] to-stone-800 top-56 z-0"></div>
@@ -63,7 +58,7 @@
         <p class="z-40 w-full border-b border-b-stone-600 p-2">My listings</p>
       </div>
       <div
-        class="flex w-11/12 lg:max-w-6xl mx-auto overflow-x-auto hover:scrollbar scrollbar-thumb-stone-500 scrollbar-track-stone-900 scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track"
+        class="flex w-11/12 lg:max-w-6xl pb-10 mx-auto overflow-x-auto hover:scrollbar scrollbar-thumb-stone-500 scrollbar-track-stone-900 scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track"
         id="myListingsContainer"
       >
         <div
@@ -278,8 +273,7 @@
         <img src="./img/LOGO.svg" alt="logo" class="h-24" />
         <p class="text-white italic">Spend Less, Get More</p>
       </div>
-      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6" id="footerContent">
-      </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6" id="footerContent"></div>
     </footer>
   </body>
 </html>

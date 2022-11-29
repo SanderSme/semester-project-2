@@ -1,65 +1,65 @@
-const tokenKey = "token";
-const userKey = "user";
+const tokenKey = 'token';
+const userKey = 'user';
 
 function saveUser(user) {
-    saveToLocalStorage(userKey, user);
-  }
-  
-  function saveToken(token) {
-    saveToLocalStorage(tokenKey, token);
-  }
-  
-  function getToken() {
-    const value = localStorage.getItem(tokenKey);
-    if (value) {
-      return JSON.parse(value);
-    } else {
-      return null;
-    }
-  }
-  
-  function getUserName() {
-    const user = getFromLocalStorage(userKey);
-    if (userKey) {
-      return user.name;
-    } else {
-      return null;
-    }
-  }
+  saveToLocalStorage(userKey, user);
+}
 
-  function getUserAvatar() {
-    const user = getFromLocalStorage(userKey)
-    if(userKey) {
-      return user.avatar
-    } else {
-      return null
-    }
-  }
+function saveToken(token) {
+  saveToLocalStorage(tokenKey, token);
+}
 
-  function getUserCredits() {
-    const user = getFromLocalStorage(userKey)
-    if(userKey) {
-      return user.credits
-    } else {
-      return null
-    }
+function getToken() {
+  const value = localStorage.getItem(tokenKey);
+  if (value) {
+    return JSON.parse(value);
+  } else {
+    return null;
   }
-  
-  function saveToLocalStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getUserName() {
+  const user = getFromLocalStorage(userKey);
+  if (userKey) {
+    return user.name;
+  } else {
+    return null;
   }
-  
-  function getFromLocalStorage(key) {
-    const value = localStorage.getItem(key);
-    if (value) {
-      return JSON.parse(value);
-    } else {
-      return [];
-    }
+}
+
+function getUserAvatar() {
+  const user = getFromLocalStorage(userKey);
+  if (userKey) {
+    return user.avatar;
+  } else {
+    return null;
   }
-  
-  function clearStorage() {
-    localStorage.clear();
+}
+
+function getUserCredits() {
+  const user = getFromLocalStorage(userKey);
+  if (userKey) {
+    return user.credits;
+  } else {
+    return null;
   }
-  
-  export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits };
+}
+
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getFromLocalStorage(key) {
+  const value = localStorage.getItem(key);
+  if (value) {
+    return JSON.parse(value);
+  } else {
+    return [];
+  }
+}
+
+function clearStorage() {
+  localStorage.clear();
+}
+
+export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits };

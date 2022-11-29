@@ -30,11 +30,9 @@
             </li>
           </ul>
         </nav>
-        <div class="lg:flex" id="headerUserInfo">
-        </div>
+        <div class="lg:flex" id="headerUserInfo"></div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full">
-      </nav>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full"></nav>
     </header>
     <main class="mb-8">
       <div class="w-11/12 md:w-1/2 lg:w-1/3 mx-auto mt-12 lg:mt-24 text-white bg-[#001321] p-8 rounded-xl">
@@ -43,7 +41,9 @@
           <div class="flex flex-col mt-8">
             <label for="email" class="p-1 text-stone-300">Email (required)</label>
             <input type="email" id="email" name="email" class="text-black p-1 rounded-lg" />
-            <p id="emailErrorMessage" class="text-red-600 hidden">Email not valid. Must be a valid stud.noroff.no email</p>
+            <p id="emailErrorMessage" class="text-red-600 hidden">
+              Email not valid. Must be a valid stud.noroff.no email
+            </p>
             <p id="emailRequiredMessage" class="text-red-600 hidden">Email is required</p>
           </div>
           <div class="flex flex-col mt-4">
@@ -52,7 +52,7 @@
             <p id="passwordErrorMessage" class="text-red-600 hidden">Password must be 8 chars or more</p>
           </div>
           <button type="submit" class="mt-8 py-2 w-1/2 mx-auto bg-sky-900 rounded-lg">Login</button>
-          <p id="loginErrorMessage"></p>
+          <p id="loginErrorMessage" class="text-red-600 mx-auto mt-4"></p>
           <a href="signup.html" class="mx-auto mt-8 text-sky-300 hover:underline">Dont have an account? Sign up here</a>
         </form>
       </div>
@@ -62,8 +62,7 @@
         <img src="./img/LOGO.svg" alt="logo" class="h-24" />
         <p class="text-white italic">Spend Less, Get More</p>
       </div>
-      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6" id="footerContent">
-      </div>
+      <div class="w-2/3 lg:max-w-6xl mx-auto flex justify-between text-white mt-6" id="footerContent"></div>
     </footer>
   </body>
 </html>
