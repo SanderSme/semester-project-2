@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script type="module" src="./js/main.js" defer></script>
     <script type="module" src="./js/components/header.js" defer></script>
-    <!-- <script type="module" src="./js/getPosts.js" defer></script> -->
+    <script type="module" src="./js/getPosts.js" defer></script>
     <title>Document</title>
   </head>
   <body class="bg-stone-800 flex flex-col min-h-screen">
@@ -55,24 +55,11 @@
       <ul class="w-11/12 lg:max-w-6xl mx-auto md:flex md:justify-around md:flex-wrap md:gap-4" id="postsContainer">
         <li id="getPostsErrorMessage" class="text-red-600 mx-auto mt-4 text-xl hidden"></li>
         <li id="NoPostsMessage" class="text-white mt-4 text-xl hidden">There are currently no posts to display</li>
-        <li class="mt-12">
-            <div class="flex md:flex-col justify-center">
-                <div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-cover rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>
-                <div class="text-white text-center bg-[#001321] rounded-r-xl md:rounded-b-xl md:rounded-tr-none w-48 lg:w-56 min-h-[160px] flex flex-col pb-4">
-                    <p class="text-lg py-1">Art Collection</p>
-                    <p class="text-sm py-2">Standing bid: 35$</p>
-                    <a href="./details.html" class="w-2/3 mx-auto py-2 px-8 bg-sky-900 rounded-lg mt-auto">Details</a></div>
-            </div>
+        <li>
+          <svg class="animate-spin h-12 w-1 mr-3 ... bg-white mt-12" viewBox="0 0 24 24">
+            <!-- ... -->
+          </svg>
         </li>
-        <li class="mt-12">
-          <div class="flex md:flex-col justify-center">
-              <div class="bg-[url('./img/art-img.png')] w-48 lg:w-56 min-h-[192px] bg-cover rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>
-              <div class="text-white text-center bg-[#001321] rounded-r-xl md:rounded-b-xl md:rounded-tr-none w-48 lg:w-56 min-h-[160px] flex flex-col pb-4">
-                  <p class="text-lg py-1">Art Collection</p>
-                  <p class="text-sm py-2">Standing bid: 35$</p>
-                  <a href="./details.html" class="w-2/3 mx-auto py-2 px-8 bg-sky-900 rounded-lg mt-auto">Details</a></div>
-          </div>
-      </li>
       </ul>
     </main>
     <footer class="h-72 mt-auto bg-stone-900">

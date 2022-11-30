@@ -8,6 +8,7 @@
     <script type="module" src="./js/main.js" defer></script>
     <script type="module" src="./js/components/header.js" defer></script>
     <script type="module" src="./js/components/createHeader.js" defer></script>
+    <script type="module" src="./js/details.js" defer></script>
     <title>Document</title>
   </head>
   <body class="bg-stone-800 flex flex-col min-h-screen">
@@ -35,15 +36,15 @@
     </header>
     <main class="mb-8">
       <div
-        class="mt-8 w-11/12 lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse"
+        class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black" id="singlePostDetails"
       >
-        <div class="text-white flex flex-col md:w-1/2 md:ml-8">
+        <!-- <div class="text-white flex flex-col">
           <h1 class="text-3xl lg:text-5xl mx-auto">Art Collection</h1>
-          <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
+          <div class="flex justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
             <p>Standing bid:</p>
             <p>34$</p>
           </div>
-          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
+          <div class="flex w-48 lg:w-72 lg:mx-auto md:justify-start mt-4">
             <p class="mr-2 font-semibold">Sold by:</p>
             <p>Petter Pettersen</p>
           </div>
@@ -51,12 +52,12 @@
             Collection of modern art consisting of 7 paintings painted by some person. Something about where they are
             from or something, maybe just filler text
           </p>
-          <div class="flex w-48 lg:w-72 mx-auto justify-center md:justify-start mt-4">
+          <div class="flex lg:w-72 lg:mx-auto justify-start mt-4">
             <p class="mr-4 font-semibold">Tags:</p>
             <p>#art #artzy</p>
-          </div>
+            </div>
           <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
-          <div class="flex max-w-xs md:w-2/3 xl:w-1/2 mx-auto gap-5 text-stone-400">
+          <div class="flex mx-auto gap-5 text-stone-400">
             <div class="flex flex-col items-center">
               <div class="flex gap-1">
                 <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">0</p>
@@ -87,11 +88,13 @@
             <p class="px-8 lg:px-20">Place bid</p>
           </button>
         </div>
+        <div class="w-96 h-96">
         <img
-          src="./img/art-img.png"
+          src="./img/kajetan-sumila-9o6kkC9LAfs-unsplash.jpg"
           alt="art collection"
-          class="mt-8 md:mt-0 rounded-xl w-3/4 mx-auto md:w-1/2 md:h-full md:max-h-96 md:max-w-sm lg:max-w-none lg:max-h-screen"
-        />
+          class="mt-8 md:mt-0 rounded-xl w-full h-full object-cover"
+        /> -->
+      </div>
       </div>
     </main>
     <footer class="h-72 mt-auto bg-stone-900">

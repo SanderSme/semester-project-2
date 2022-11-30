@@ -75,7 +75,6 @@ signUpForm.addEventListener('submit', function (event) {
   }
   let isFormValid = isUserName && isEmail && isEmailValid && isPassword && isConfirmPasswordValid && isAvatarValid;
   if (isFormValid) {
-    console.log('validation done');
     const userData = {
       name: userName.value,
       email: email.value,
