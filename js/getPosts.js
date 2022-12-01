@@ -82,13 +82,22 @@ const displayPosts = (data) => {
         if (!post.media[0]) {
           postMedia = `<div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
         }
+        let postBids = post.bids;
+        postBids.sort(function(x, y) {
+            return y.amount - x.amount
+          })
+        
+          let standingBid = 0
+          if(postBids[0]) {
+            standingBid = postBids[0].amount
+          }
         const postID = post.id;
         return `<li class="mt-12 rounded-xl shadow shadow-black bg-[#001321] w-96 md:w-48 lg:w-56 h-fit mx-auto">
         <div class="flex md:flex-col justify-center">
             ${postMedia}
             <div class="text-white bg-[#001321] rounded-r-xl md:rounded-b-xl md:rounded-tr-none w-48 lg:w-56 min-h-[160px] flex flex-col pl-2 pr-2 pb-4">
                 <p class="text-lg py-2 mx-auto">${postTitle}</p>
-                <p class="text-sm mx-auto mt-auto mb-1">Standing bid: 35$</p>
+                <p class="text-sm mx-auto mt-auto mb-1">Standing bid: ${standingBid} c</p>
                 <a href="./details.html?post_id=${postID}" class="w-2/3 mx-auto text-center py-2 px-8 bg-sky-900 rounded-lg mt-auto">Details</a></div>
         </div>
     </li>`;

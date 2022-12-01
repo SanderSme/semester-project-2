@@ -9,7 +9,7 @@
     <script type="module" src="./js/components/header.js" defer></script>
     <script type="module" src="./js/components/createHeader.js" defer></script>
     <script type="module" src="./js/details.js" defer></script>
-    <title>Document</title>
+    <title>auctiON || details</title>
   </head>
   <body class="bg-stone-800 flex flex-col min-h-screen">
     <header class="h-24 md:h-20 lg:h-16 bg-stone-800">
@@ -36,65 +36,14 @@
     </header>
     <main class="mb-8">
       <div
-        class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black" id="singlePostDetails"
-      >
-        <!-- <div class="text-white flex flex-col">
-          <h1 class="text-3xl lg:text-5xl mx-auto">Art Collection</h1>
-          <div class="flex justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
-            <p>Standing bid:</p>
-            <p>34$</p>
-          </div>
-          <div class="flex w-48 lg:w-72 lg:mx-auto md:justify-start mt-4">
-            <p class="mr-2 font-semibold">Sold by:</p>
-            <p>Petter Pettersen</p>
-          </div>
-          <p class="mt-4 lg:w-72 mx-auto">
-            Collection of modern art consisting of 7 paintings painted by some person. Something about where they are
-            from or something, maybe just filler text
-          </p>
-          <div class="flex lg:w-72 lg:mx-auto justify-start mt-4">
-            <p class="mr-4 font-semibold">Tags:</p>
-            <p>#art #artzy</p>
-            </div>
-          <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
-          <div class="flex mx-auto gap-5 text-stone-400">
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">0</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">5</p>
-              </div>
-              <p>Days</p>
-            </div>
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">1</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">7</p>
-              </div>
-              <p>Hours</p>
-            </div>
-            <div class="flex flex-col items-center">
-              <div class="flex gap-1">
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">2</p>
-                <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">8</p>
-              </div>
-              <p>Minutes</p>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="flex items-center w-48 lg:w-72 mx-auto mt-8 bg-green-800 hover:bg-green-900 p-2 rounded-xl"
-          >
-            <input type="number" value="35" class="text-black p-1 w-12 rounded-md" />
-            <p class="px-8 lg:px-20">Place bid</p>
-          </button>
+        class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black"
+        id="singlePostDetails"
+      ></div>
+      <div class="mt-16 max-w-[90%] lg:max-w-6xl mx-auto text-white">
+        <p class="border-b border-b-stone-600 p-2 text-xl">Bidding history:</p>
+        <p class="flex justify-center text-lg mt-6" id="noBidsMessage">No biddings on this item yet</p>
+        <div class="w-full md:w-2/3 mx-auto mt-6 p-8" id="biddingHistory">
         </div>
-        <div class="w-96 h-96">
-        <img
-          src="./img/kajetan-sumila-9o6kkC9LAfs-unsplash.jpg"
-          alt="art collection"
-          class="mt-8 md:mt-0 rounded-xl w-full h-full object-cover"
-        /> -->
-      </div>
       </div>
     </main>
     <footer class="h-72 mt-auto bg-stone-900">

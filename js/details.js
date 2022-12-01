@@ -6,11 +6,17 @@ const params = window.location.search;
 const searchParams = new URLSearchParams(params);
 const postID = searchParams.get('post_id');
 const accessToken = getToken();
-const countDownContainer = document.querySelector("#countDown")
+const countDownContainer = document.querySelector('#countDown');
 
 const singlePostDetails = document.querySelector('#singlePostDetails');
+const biddingHistory = document.querySelector("#biddingHistory");
+const noBidsMessage = document.querySelector("#noBidsMessage");
 
 const SINGLE_POST_API_URL = `${GET_POSTS_API_URL}/${postID}?_bids=true&_seller=true`;
+
+if (!accessToken) {
+  location.href = "../login.html";
+}
 
 async function getPostByID() {
   const response = await fetch(SINGLE_POST_API_URL, {
@@ -23,9 +29,12 @@ async function getPostByID() {
   const data = await response.json();
   console.log(data);
   const postTitle = data.title;
-  const postBody = data.description;
+  let postBody = data.description;
+  if(!postBody) {
+    postBody = "--"
+  }
   const postAuthor = data.seller.name;
-  const postTags = data.tags;
+  let postTags = data.tags;
   let postMedia = `<img
     src="${data.media[0]}"
     alt="${postTitle}"
@@ -47,7 +56,7 @@ async function getPostByID() {
     }
     return listOfTags;
   }
-  const endsAt = new Date(data.endsAt)
+  const endsAt = new Date(data.endsAt);
   console.log(endsAt);
   const countDown = new Date(`${endsAt}`).getTime();
   console.log(countDown);
@@ -60,11 +69,62 @@ async function getPostByID() {
   const daysSplit = splitIntoArray(days);
   const hoursSplit = splitIntoArray(hours);
   const minutesSplit = splitIntoArray(minutes);
+  let postBids = data.bids;
+  console.log(postBids);
+  postBids.sort(function(x, y) {
+    return y.amount - x.amount
+  })
+
+  let standingBid = 0
+  if(postBids[0]) {
+    standingBid = postBids[0].amount
+  }
+  let biddingValue = standingBid + 1;
+
+  function displayHighestBid () {
+    let highestBid = ``
+    if(postBids[0]) {
+        const standingBid = postBids[0].amount
+        const standigBidName = postBids[0].bidderName
+        const standingBidCreated = postBids[0].created
+        noBidsMessage.classList.add('hidden')
+        highestBid = `<div class="flex justify-between border-b border-b-stone-700 py-2">
+        <div class="flex gap-3">
+          <p class="text-stone-400">${standingBidCreated}</p>
+          <p>${standigBidName}</p>
+        </div>
+        <p class="text-green-400">${standingBid} c</p>
+      </div>`
+    } else {
+        noBidsMessage.classList.remove('hidden')
+    }
+    return highestBid;
+  }
+  function displayBiddingHistory() {
+    let listOfBiddings = ``;
+    for(let i = 1; i < postBids.length; i++) {
+        if(postBids[i]) {
+            const bidName = postBids[i].bidderName
+            const bidAmount = postBids[i].amount
+            noBidsMessage.classList.add('hidden')
+            listOfBiddings += `<div class="flex justify-between border-b border-b-stone-700 py-2">
+            <div class="flex gap-3">
+              <p class="text-stone-400">${postBids[i].created}</p>
+              <p>${bidName}</p>
+            </div>
+            <p class="text-red-400">${bidAmount} c</p>
+          </div>`
+        } else {
+            noBidsMessage.classList.remove('hidden')
+        }
+    }
+    return listOfBiddings;
+  }
   singlePostDetails.innerHTML = `<div class="text-white flex flex-col md:w-1/2 md:ml-8">
     <h1 class="text-3xl lg:text-5xl mx-auto">${postTitle}</h1>
     <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
       <p>Standing bid:</p>
-      <p>34$</p>
+      <p>${standingBid} c</p>
     </div>
     <div class="flex w-48 lg:w-96 lg:mx-auto md:justify-start mt-4">
       <p class="mr-2 font-semibold">Sold by:</p>
@@ -101,15 +161,17 @@ async function getPostByID() {
         <p>Minutes</p>
       </div>
     </div>
+    <div class="flex justify-center gap-2 mt-6 items-center">
+    <input type="number" value="${biddingValue}" id="biddingValue" class="text-black p-1 w-20 h-8 rounded-md" />
     <button
       type="button"
-      class="flex items-center w-48 lg:w-72 mx-auto mt-8 bg-green-800 hover:bg-green-900 p-2 rounded-xl"
-    >
-      <input type="number" value="35" class="text-black p-1 w-12 rounded-md" />
-      <p class="px-8 lg:px-20">Place bid</p>
+      class="px-8 py-2 bg-green-800 hover:bg-green-900 rounded-xl"
+    >Place bid
     </button>
+    </div>
   </div>
   ${postMedia}`;
+  biddingHistory.innerHTML = `${displayHighestBid()} ${displayBiddingHistory()}`;
 }
 
 getPostByID();
