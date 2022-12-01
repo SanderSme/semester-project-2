@@ -1,49 +1,81 @@
-import { CREATE_POST_API_URL } from "./settings/api";
+import { CREATE_POST_API_URL } from './settings/api';
 import { getToken } from './utils/storage';
-import { isValidUrl } from "./utils/validation";
+import { isValidUrl } from './utils/validation';
 
+const accessToken = getToken();
+const listItemForm = document.querySelector('#listItemForm');
 
-const listItemForm = document.querySelector("#listItemForm")
+const image = document.querySelector('#image');
+const imageErrorMessage = document.querySelector('#imageErrorMessage');
 
-const image = document.querySelector("#image")
-const imageErrorMessage = document.querySelector("#imageErrorMessage")
+const title = document.querySelector('#title');
+const titleErrorMessage = document.querySelector('#titleErrorMessage');
 
-const title = document.querySelector("#title")
-const titleErrorMessage = document.querySelector("#titleErrorMessage")
+const description = document.querySelector('#description');
 
-const description = document.querySelector("#description")
+const tags = document.querySelector('#tags');
 
-const tags = document.querySelector("#tags")
+const auctionEnds = document.querySelector('#auctionEnds');
+const auctionEndsError = document.querySelector('#auctionEndsError');
 
-const auctionEnds = document.querySelector("#auctionEnds")
-const auctionEndsError = document.querySelector("#auctionEndsError")
+const listItemErrorMessage = document.querySelector('#listItemErrorMessage');
+if (!accessToken) {
+  location.href = '../login.html';
+}
 
-const listItemErrorMessage = document.querySelector("#listItemErrorMessage")
-
-listItemForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    let isImageValid = false;
-    isImageValid = isValidUrl(image.value) || image.value === '';
-    if(isImageValid) {
-        imageErrorMessage.classList.add('hidden')
-    } else {
-        imageErrorMessage.classList.remove('hidden')
-    }
-    let isTitle = false;
-    if(title.value.trim().length > 0) {
-        titleErrorMessage.classList.add('hidden');
-        isTitle = true;
-    } else {
-        titleErrorMessage.classList.remove('hidden')
-    }
-    if(auctionEnds.value) {
-        const date = new Date(auctionEnds.value)
-        auctionEndsError.classList.add('hidden')
-    } else {
-        auctionEndsError.classList.remove('hidden')
-    }
-    if(tags.value) {
-        const tagsString = new String(tags.value)
-        const tagsArray = tagsString.split(' ')
-    }
-})
+listItemForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  let isImageValid = false;
+  isImageValid = isValidUrl(image.value) || image.value === '';
+  if (isImageValid) {
+    imageErrorMessage.classList.add('hidden');
+  } else {
+    imageErrorMessage.classList.remove('hidden');
+  }
+  let isTitle = false;
+  if (title.value.trim().length > 0) {
+    titleErrorMessage.classList.add('hidden');
+    isTitle = true;
+  } else {
+    titleErrorMessage.classList.remove('hidden');
+  }
+  let isAuctionEnds = false;
+  if (auctionEnds.value) {
+    auctionEndsError.classList.add('hidden');
+    isAuctionEnds = true;
+  } else {
+    auctionEndsError.classList.remove('hidden');
+  }
+  let formIsValid = isImageValid && isTitle && isAuctionEnds;
+  if (formIsValid) {
+    let tagsString = new String(tags.value);
+    let tagsArray = tagsString.split(' ');
+    const date = new Date(auctionEnds.value);
+    let postData = {
+      title: title.value,
+      description: description.value,
+      tags: tagsArray,
+      media: [image.value],
+      endsAt: date,
+    };
+    (async function createListing() {
+      const response = await fetch(CREATE_POST_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(postData),
+      });
+      if (response.ok) {
+        location.href = '../index.html';
+      } else {
+        const error = await response.json();
+        const errorMessage = `${error.errors[0].message}`;
+        throw new Error(errorMessage);
+      }
+    })().catch((errorMessage) => {
+      listItemErrorMessage.innerHTML = errorMessage;
+    });
+  }
+});

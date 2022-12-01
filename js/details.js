@@ -9,13 +9,13 @@ const accessToken = getToken();
 const countDownContainer = document.querySelector('#countDown');
 
 const singlePostDetails = document.querySelector('#singlePostDetails');
-const biddingHistory = document.querySelector("#biddingHistory");
-const noBidsMessage = document.querySelector("#noBidsMessage");
+const biddingHistory = document.querySelector('#biddingHistory');
+const noBidsMessage = document.querySelector('#noBidsMessage');
 
 const SINGLE_POST_API_URL = `${GET_POSTS_API_URL}/${postID}?_bids=true&_seller=true`;
 
 if (!accessToken) {
-  location.href = "../login.html";
+  location.href = '../login.html';
 }
 
 async function getPostByID() {
@@ -30,8 +30,8 @@ async function getPostByID() {
   console.log(data);
   const postTitle = data.title;
   let postBody = data.description;
-  if(!postBody) {
-    postBody = "--"
+  if (!postBody) {
+    postBody = '--';
   }
   const postAuthor = data.seller.name;
   let postTags = data.tags;
@@ -71,52 +71,67 @@ async function getPostByID() {
   const minutesSplit = splitIntoArray(minutes);
   let postBids = data.bids;
   console.log(postBids);
-  postBids.sort(function(x, y) {
-    return y.amount - x.amount
-  })
+  postBids.sort(function (x, y) {
+    return y.amount - x.amount;
+  });
 
-  let standingBid = 0
-  if(postBids[0]) {
-    standingBid = postBids[0].amount
+  let standingBid = 0;
+  if (postBids[0]) {
+    standingBid = postBids[0].amount;
   }
   let biddingValue = standingBid + 1;
 
-  function displayHighestBid () {
-    let highestBid = ``
-    if(postBids[0]) {
-        const standingBid = postBids[0].amount
-        const standigBidName = postBids[0].bidderName
-        const standingBidCreated = postBids[0].created
-        noBidsMessage.classList.add('hidden')
-        highestBid = `<div class="flex justify-between border-b border-b-stone-700 py-2">
+  function displayHighestBid() {
+    let highestBid = ``;
+    if (postBids[0]) {
+      const standingBid = postBids[0].amount;
+      const standigBidName = postBids[0].bidderName;
+      const standingBidCreatedDatetime = new Date(postBids[0].created);
+      const standingBidCreated = standingBidCreatedDatetime.toLocaleTimeString([], {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      noBidsMessage.classList.add('hidden');
+      highestBid = `<div class="flex justify-between border-b border-b-stone-700 py-2">
         <div class="flex gap-3">
           <p class="text-stone-400">${standingBidCreated}</p>
           <p>${standigBidName}</p>
         </div>
         <p class="text-green-400">${standingBid} c</p>
-      </div>`
+      </div>`;
     } else {
-        noBidsMessage.classList.remove('hidden')
+      noBidsMessage.classList.remove('hidden');
     }
     return highestBid;
   }
   function displayBiddingHistory() {
     let listOfBiddings = ``;
-    for(let i = 1; i < postBids.length; i++) {
-        if(postBids[i]) {
-            const bidName = postBids[i].bidderName
-            const bidAmount = postBids[i].amount
-            noBidsMessage.classList.add('hidden')
-            listOfBiddings += `<div class="flex justify-between border-b border-b-stone-700 py-2">
+    for (let i = 1; i < postBids.length; i++) {
+      if (postBids[i]) {
+        const bidName = postBids[i].bidderName;
+        const bidAmount = postBids[i].amount;
+        const bidCreatedDatetime = new Date(postBids[i].created);
+        const bidCreated = bidCreatedDatetime.toLocaleTimeString([], {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        noBidsMessage.classList.add('hidden');
+        listOfBiddings += `<div class="flex justify-between border-b border-b-stone-700 py-2">
             <div class="flex gap-3">
-              <p class="text-stone-400">${postBids[i].created}</p>
-              <p>${bidName}</p>
+              <p class="text-stone-400">${bidCreated}</p>
+              <p class="text-stone-200">${bidName}</p>
             </div>
-            <p class="text-red-400">${bidAmount} c</p>
-          </div>`
-        } else {
-            noBidsMessage.classList.remove('hidden')
-        }
+            <p class="text-stone-200">${bidAmount} c</p>
+          </div>`;
+      } else {
+        noBidsMessage.classList.remove('hidden');
+      }
     }
     return listOfBiddings;
   }

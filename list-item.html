@@ -74,27 +74,14 @@
                 <label for="tags" class="p-1">Tags (optional)</label>
                 <input type="text" name="tags" id="tags" class="text-black p-1 rounded-lg" />
               </div>
-              <!-- <div class="flex flex-row gap-5 mx-auto mt-8">
-                <label for="startingBid" class="p-1">Starting bid: </label>
-                <input
-                  type="number"
-                  value="1"
-                  name="startingBid"
-                  id="startingBid"
-                  class="text-black p-1 rounded-lg w-14"
-                />
-              </div> -->
             </div>
           </div>
           <div class="flex flex-col mt-4 md:mx-auto">
             <label for="auctionEnds" class="p-1">Auction ends: (required)</label>
-              <input type="datetime-local" id="auctionEnds" class="text-black p-1 rounded-lg" />
+            <input type="datetime-local" id="auctionEnds" class="text-black p-1 rounded-lg" />
             <p id="auctionEndsError" class="text-red-600 hidden">End date is required</p>
           </div>
-          <button
-            type="submit"
-            class="mt-8 py-2 px-8 mx-auto bg-green-800 hover:bg-green-900 p-2 rounded-xl"
-          >
+          <button type="submit" class="mt-8 py-2 px-8 mx-auto bg-green-800 hover:bg-green-900 p-2 rounded-xl">
             List Item
           </button>
           <p id="listItemErrorMessage" class="text-red-600 mx-auto mt-4"></p>

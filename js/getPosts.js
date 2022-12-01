@@ -50,7 +50,7 @@ async function getPosts() {
   const response = await fetch(GET_POSTS_URL, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application.json',
+      'Content-Type': 'application/json',
     },
   });
   if (response.ok) {
@@ -83,14 +83,14 @@ const displayPosts = (data) => {
           postMedia = `<div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
         }
         let postBids = post.bids;
-        postBids.sort(function(x, y) {
-            return y.amount - x.amount
-          })
-        
-          let standingBid = 0
-          if(postBids[0]) {
-            standingBid = postBids[0].amount
-          }
+        postBids.sort(function (x, y) {
+          return y.amount - x.amount;
+        });
+
+        let standingBid = 0;
+        if (postBids[0]) {
+          standingBid = postBids[0].amount;
+        }
         const postID = post.id;
         return `<li class="mt-12 rounded-xl shadow shadow-black bg-[#001321] w-96 md:w-48 lg:w-56 h-fit mx-auto">
         <div class="flex md:flex-col justify-center">
