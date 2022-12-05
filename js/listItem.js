@@ -58,6 +58,14 @@ listItemForm.addEventListener('submit', function (event) {
       media: [image.value],
       endsAt: date,
     };
+    if (!image.value) {
+      postData = {
+        title: title.value,
+        description: description.value,
+        tags: tagsArray,
+        endsAt: date,
+      };
+    }
     (async function createListing() {
       const response = await fetch(CREATE_POST_API_URL, {
         method: 'POST',

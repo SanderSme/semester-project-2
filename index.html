@@ -23,17 +23,12 @@
             <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
             <li class="text-lg mx-5 hover:underline"><a href="profile.html">Profile</a></li>
             <li class="text-lg mx-5 hover:underline"><a href="list-item.html">List Item</a></li>
-            <!-- <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li> -->
-            <!-- <li id="searchBar" class="opacity-0">
-              <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
-              <button type="button" class="bg-sky-900 px-2 py-1 rounded-lg">Search</button>
-            </li> -->
           </ul>
         </div>
         </nav>
-        <div class="lg:flex" id="headerUserInfo"></div>
+        <div class="flex flex-col lg:flex-row" id="headerUserInfo"></div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full"></nav>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full z-40"></nav>
     </header>
     <main class="mb-32">
       <div class="bg-hero-banner bg-cover h-64 md:h-72 lg:h-[500px] flex justify-center">
@@ -46,10 +41,10 @@
         class="w-11/12 lg:max-w-6xl mx-auto text-white mt-12 flex justify-between items-baseline border-b border-b-stone-600 p-2 relative"
       >
         <p class="text-xl">Products</p>
-        <input type="search" placeholder="Search..." id="searchBar" class="rounded p-1 md:w-72 lg:w-96 text-black absolute bottom-14 md:bottom-2 left-[50%] translate-x-[-50%]" />
-        <div>
-          <button type="button" id="newBtn" class="mr-[-6px] py-2 px-4 bg-stone-900 rounded-tl-xl mb-[-8px]">Newest</button>
-          <button type="button" id="oldBtn" class="py-2 px-4 bg-stone-700 rounded-tr-xl mb-[-8px] opacity-30">Oldest</button>
+        <input type="search" placeholder="Search..." id="searchBar" class="rounded md:p-1 w-32 sm:w-72 lg:w-96 text-black absolute bottom-2 left-24 sm:left-[50%] sm:translate-x-[-50%]" />
+        <div class="mb-[-2rem]">
+          <button type="button" id="newBtn" class="mr-[-6px] text-sm md:text-base py-1 px-2 md:py-2 md:px-4 bg-stone-900 rounded-tl-xl">Newest</button>
+          <button type="button" id="oldBtn" class="mr-[-6px] text-sm md:text-base py-1 px-2 md:py-2 md:px-4 bg-stone-700 rounded-tr-xl">Oldest</button>
         </div>
       </div>
       <ul class="w-11/12 lg:max-w-6xl mx-auto md:flex md:justify-around md:flex-wrap md:gap-4" id="postsContainer">
@@ -57,7 +52,6 @@
         <li id="NoPostsMessage" class="text-white mt-4 text-xl hidden">There are currently no posts to display</li>
         <li>
           <svg class="animate-spin h-12 w-1 mr-3 ... bg-white mt-12" viewBox="0 0 24 24">
-            <!-- ... -->
           </svg>
         </li>
       </ul>

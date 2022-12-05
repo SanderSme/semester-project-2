@@ -15,6 +15,7 @@
     <header class="h-24 md:h-20 lg:h-16 bg-stone-800">
       <div class="h-24 md:h-20 lg:h-16 w-11/12 lg:max-w-6xl mx-auto flex justify-between items-center align-middle">
         <button type="button" class="text-white fa fa-bars fa-2x lg:hidden" id="hamburgerMenu"></button>
+        <div class="flex items-center gap-20">
         <a href="index.html">
           <img src="./img/LOGO.svg" alt="logo" />
         </a>
@@ -23,16 +24,12 @@
             <li class="text-lg mx-5 hover:underline"><a href="index.html">Home</a></li>
             <li class="text-lg mx-5 hover:underline"><a href="profile.html">Profile</a></li>
             <li class="text-lg mx-5 hover:underline"><a href="list-item.html">List Item</a></li>
-            <li class="text-lg mx-5"><button type="button" id="searchBtn" class="hover:underline">Search</button></li>
-            <li id="searchBar" class="opacity-0">
-              <input type="search" placeholder="Search..." class="rounded p-1 ml-5 xl:w-72 text-black" />
-              <button type="button" class="bg-sky-900 px-2 py-1 rounded-lg">Search</button>
-            </li>
           </ul>
+        </div>
         </nav>
-        <div class="lg:flex" id="headerUserInfo"></div>
+        <div class="flex flex-col lg:flex-row" id="headerUserInfo"></div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full"></nav>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full z-40"></nav>
     </header>
     <main class="mb-32">
       <div class="w-11/12 lg:max-w-6xl mx-auto bg-[#001321] p-8 rounded-xl mt-8">
@@ -44,7 +41,7 @@
               <div class="w-full mx-auto flex flex-col mt-4">
                 <label for="image" class="text-white p-1">Image URL (optional)</label>
                 <input
-                  type="url"
+                  type="text"
                   name="image"
                   id="image"
                   accept="image/png, image/jpeg"

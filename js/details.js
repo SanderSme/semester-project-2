@@ -6,8 +6,6 @@ const params = window.location.search;
 const searchParams = new URLSearchParams(params);
 const postID = searchParams.get('post_id');
 const accessToken = getToken();
-const countDownContainer = document.querySelector('#countDown');
-
 const singlePostDetails = document.querySelector('#singlePostDetails');
 const biddingHistory = document.querySelector('#biddingHistory');
 const noBidsMessage = document.querySelector('#noBidsMessage');
@@ -28,7 +26,10 @@ async function getPostByID() {
   });
   const data = await response.json();
   console.log(data);
-  const postTitle = data.title;
+  let postTitle = data.title;
+  if (!data.title) {
+    postTitle = 'No Title';
+  }
   let postBody = data.description;
   if (!postBody) {
     postBody = '--';
@@ -63,6 +64,7 @@ async function getPostByID() {
   let now = new Date().getTime();
   console.log(now);
   let timeleft = countDown - now;
+  console.log(timeleft);
   let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
   let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
@@ -70,7 +72,6 @@ async function getPostByID() {
   const hoursSplit = splitIntoArray(hours);
   const minutesSplit = splitIntoArray(minutes);
   let postBids = data.bids;
-  console.log(postBids);
   postBids.sort(function (x, y) {
     return y.amount - x.amount;
   });
@@ -135,7 +136,8 @@ async function getPostByID() {
     }
     return listOfBiddings;
   }
-  singlePostDetails.innerHTML = `<div class="text-white flex flex-col md:w-1/2 md:ml-8">
+  singlePostDetails.innerHTML = `
+  <div class="text-white flex flex-col md:w-1/2 md:ml-8">
     <h1 class="text-3xl lg:text-5xl mx-auto">${postTitle}</h1>
     <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
       <p>Standing bid:</p>
@@ -151,7 +153,7 @@ async function getPostByID() {
     <div class="flex lg:w-96 lg:mx-auto justify-start mt-4">
       <p class="mr-4 font-semibold">Tags:</p>
       <p>${displayTags()}</p>
-      </div>
+    </div>
     <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
     <div class="flex mx-auto gap-5 text-stone-400" id="countDown">
       <div class="flex flex-col items-center">
@@ -177,16 +179,26 @@ async function getPostByID() {
       </div>
     </div>
     <div class="flex justify-center gap-2 mt-6 items-center">
-    <input type="number" value="${biddingValue}" id="biddingValue" class="text-black p-1 w-20 h-8 rounded-md" />
-    <button
-      type="button"
-      class="px-8 py-2 bg-green-800 hover:bg-green-900 rounded-xl"
-    >Place bid
+      <input type="number" value="${biddingValue}" id="biddingValue" class="text-black p-1 w-20 h-8 rounded-md" />
+      <button
+        type="button"
+        id="placeOrderBtn"
+        class="px-8 py-2 bg-green-800 hover:bg-green-900 rounded-xl"
+      >Place bid
     </button>
     </div>
   </div>
   ${postMedia}`;
   biddingHistory.innerHTML = `${displayHighestBid()} ${displayBiddingHistory()}`;
+  const countDownContainer = document.querySelector('#countDown');
+  const placeOrderBtn = document.querySelector('#placeOrderBtn');
+  console.log(countDownContainer);
+  if (timeleft < 0) {
+    countDownContainer.innerHTML = `<p class="text-xl">Auction Ended</p>`;
+    placeOrderBtn.classList.add('opacity-70');
+    placeOrderBtn.classList.remove('hover:bg-green-900');
+    placeOrderBtn.classList.add('cursor-no-drop');
+  }
 }
 
 getPostByID();

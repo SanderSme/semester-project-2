@@ -77,7 +77,6 @@ const displayPosts = (data) => {
         if (!post.title) {
           postTitle = 'No Title';
         }
-        // let postMedia = `<div style="background-image: url('${post.media[0]}')" class="w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
         let postMedia = `<div class="w-48 h-48 lg:w-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"><img src="${post.media[0]}" class="h-full w-full object-cover rounded-l-xl md:rounded-bl-none md:rounded-t-xl"/></div>`;
         if (!post.media[0]) {
           postMedia = `<div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
@@ -92,7 +91,7 @@ const displayPosts = (data) => {
           standingBid = postBids[0].amount;
         }
         const postID = post.id;
-        return `<li class="mt-12 rounded-xl shadow shadow-black bg-[#001321] w-96 md:w-48 lg:w-56 h-fit mx-auto">
+        return `<li class="mt-12 rounded-xl shadow shadow-black bg-[#001321] w-96 max-w-[90%] md:w-48 lg:w-56 h-fit mx-auto">
         <div class="flex md:flex-col justify-center">
             ${postMedia}
             <div class="text-white bg-[#001321] rounded-r-xl md:rounded-b-xl md:rounded-tr-none w-48 lg:w-56 min-h-[160px] flex flex-col pl-2 pr-2 pb-4">

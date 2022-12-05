@@ -36,6 +36,15 @@ function getUserAvatar() {
   }
 }
 
+function getUserEmail() {
+  const user = getFromLocalStorage(userKey);
+  if (userKey) {
+    return user.email;
+  } else {
+    return null;
+  }
+}
+
 function getUserCredits() {
   const user = getFromLocalStorage(userKey);
   if (userKey) {
@@ -62,4 +71,4 @@ function clearStorage() {
   localStorage.clear();
 }
 
-export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits };
+export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits, getUserEmail };

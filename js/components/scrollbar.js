@@ -1,6 +1,6 @@
-const myListingsContainer = document.querySelector('#myListingsContainer');
+const userListingsContainer = document.querySelector('#userListingsContainer');
 
-myListingsContainer.addEventListener('wheel', (event) => {
+userListingsContainer.addEventListener('wheel', (event) => {
   event.preventDefault();
-  myListingsContainer.scrollLeft += event.deltaY;
+  userListingsContainer.scrollLeft += event.deltaY;
 });

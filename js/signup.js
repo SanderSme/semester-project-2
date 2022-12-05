@@ -34,6 +34,7 @@ signUpForm.addEventListener('submit', function (event) {
   let isValidUserName = false;
   if (userName.value.trim().length && validateUsername(userName.value) === true) {
     usernameValidationMessage.classList.add('hidden');
+    isValidUserName = true;
   } else {
     usernameValidationMessage.classList.remove('hidden');
   }
@@ -70,10 +71,12 @@ signUpForm.addEventListener('submit', function (event) {
   isAvatarValid = isValidUrl(avatar.value) || avatar.value === '';
   if (isAvatarValid) {
     avatarErrorMessage.classList.add('hidden');
+    isAvatarValid = true;
   } else {
     avatarErrorMessage.classList.remove('hidden');
   }
-  let isFormValid = isUserName && isEmail && isEmailValid && isPassword && isConfirmPasswordValid && isAvatarValid;
+  let isFormValid =
+    isUserName && isValidUserName && isEmail && isEmailValid && isPassword && isConfirmPasswordValid && isAvatarValid;
   if (isFormValid) {
     const userData = {
       name: userName.value,
@@ -81,7 +84,6 @@ signUpForm.addEventListener('submit', function (event) {
       password: password.value,
       avatar: avatar.value,
     };
-
     (async function newUser() {
       const response = await fetch(`${SIGNUP_API_URL}`, {
         method: 'POST',
@@ -102,5 +104,7 @@ signUpForm.addEventListener('submit', function (event) {
     })().catch((err) => {
       signupErrorMessage.innerHTML = `${err}`;
     });
+  } else {
+    signupErrorMessage.innerHTML = 'Validation failed. Pleace try again';
   }
 });
