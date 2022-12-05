@@ -279,28 +279,21 @@ async function displayUserBids() {
 
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     if (!data.length) {
       noBidsMessage.classList.remove('hidden');
     } else {
       noBidsMessage.classList.add('hidden');
       for (let i = 0; i < data.length; i++) {
-        let postTitle = data[i].title;
-        if (!data[i].title) {
+        let postTitle = data[i].listing.title;
+        if (!data[i].listing.title) {
           postTitle = 'No Title';
         }
-        let postMedia = `<div class="w-48 h-48 lg:w-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"><img src="${data[i].media[0]}" class="h-full w-full object-cover rounded-l-xl md:rounded-bl-none md:rounded-t-xl"/></div>`;
-        if (!data[i].media[0]) {
+        let postMedia = `<div class="w-48 h-48 lg:w-56 rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"><img src="${data[i].listing.media[0]}" class="h-full w-full object-cover rounded-l-xl md:rounded-bl-none md:rounded-t-xl"/></div>`;
+        if (!data[i].listing.media[0]) {
           postMedia = `<div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
         }
-        let postBids = data[i].bids;
-        postBids.sort(function (x, y) {
-          return y.amount - x.amount;
-        });
-
-        let standingBid = 0;
-        if (postBids[0]) {
-          standingBid = postBids[0].amount;
-        }
+        let postBids = data[i].amount;
         const postID = data[i].id;
         userBidsContainer.innerHTML += `<div
         class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
@@ -311,7 +304,7 @@ async function displayUserBids() {
             class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
             <p class="text-lg py-1">${postTitle}</p>
-            <p class="text-sm md:mt-2">Standing bid: ${standingBid} c</p>
+            <p class="text-sm md:mt-2">Your bid: ${postBids} c</p>
             <a href="./details.html?post_id=${postID}" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
         </div>
