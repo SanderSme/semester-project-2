@@ -18,16 +18,16 @@ const profileInfoContainer = document.querySelector('#profileInfoContainer');
 const profileContainer = document.querySelector('#profile-container');
 const changeAvatarForm = document.querySelector('#changeAvatarForm');
 const avatarInput = document.querySelector('#avatarInput');
-const generalErrorMessage = document.querySelector("#generalErrorMessage")
+const generalErrorMessage = document.querySelector('#generalErrorMessage');
 
 const userListingsContainer = document.querySelector('#userListingsContainer');
 const userBidsContainer = document.querySelector('#userBidsContainer');
 
 const noListingsMessage = document.querySelector('#noListingsMessage');
 
-const deletePopup = document.querySelector("#deletePopup")
-const deleteBtn = document.querySelector("#deleteBtn")
-const stopDeleteBtn = document.querySelector("#stopDeleteBtn")
+const deletePopup = document.querySelector('#deletePopup');
+const deleteBtn = document.querySelector('#deleteBtn');
+const stopDeleteBtn = document.querySelector('#stopDeleteBtn');
 
 const editPostForm = document.querySelector('#editPostForm');
 const stopEditPostBtn = document.querySelector('#stopEditPostBtn');
@@ -46,7 +46,6 @@ changeAvatarForm.addEventListener('submit', function (event) {
     const avatarData = {
       avatar: avatarInput.value,
     };
-    console.log(avatarData);
     (async function changeAvatar() {
       const response = await fetch(CHANGE_AVATAR_URL, {
         method: 'PUT',
@@ -57,15 +56,15 @@ changeAvatarForm.addEventListener('submit', function (event) {
         body: JSON.stringify(avatarData),
       });
       if (response.ok) {
-        updateLocalStorrage(PROFILE_API_URL)
+        updateLocalStorrage(PROFILE_API_URL);
       } else {
         const error = await response.json();
-        const errorMessage = error.errors[0].message
-        throw new Error(errorMessage)
-        }
+        const errorMessage = error.errors[0].message;
+        throw new Error(errorMessage);
+      }
     })().catch((errorMessage) => {
-        generalErrorMessage.innerHTML = `${errorMessage}`
-    })
+      generalErrorMessage.innerHTML = `${errorMessage}`;
+    });
   }
 });
 
@@ -164,52 +163,52 @@ displayUserListings().then(() => {
     profileContainer.classList.remove('blur-sm');
   });
 
-  const deletePostBtn = document.getElementsByClassName("delete-post-btn")
-  stopDeleteBtn.addEventListener("click", () => {
-    deletePopup.classList.add('hidden')
-    profileContainer.classList.remove('blur-sm')
-  })
+  const deletePostBtn = document.getElementsByClassName('delete-post-btn');
+  stopDeleteBtn.addEventListener('click', () => {
+    deletePopup.classList.add('hidden');
+    profileContainer.classList.remove('blur-sm');
+  });
 
-  const deletePostErrorMessage = document.querySelector("#deletePostErrorMessage")
+  const deletePostErrorMessage = document.querySelector('#deletePostErrorMessage');
 
-  const editTitle = document.querySelector("#editTitle")
-  const editTitleErrorMessage = document.querySelector("#editTitleErrorMessage")
+  const editTitle = document.querySelector('#editTitle');
+  const editTitleErrorMessage = document.querySelector('#editTitleErrorMessage');
 
-  const editDescription = document.querySelector("#editDescription")
+  const editDescription = document.querySelector('#editDescription');
 
-  const editTags = document.querySelector("#editTags")
+  const editTags = document.querySelector('#editTags');
 
-  const editImage = document.querySelector("#editImage")
-  const editImageErrorMessage = document.querySelector("#editImageErrorMessage")
+  const editImage = document.querySelector('#editImage');
+  const editImageErrorMessage = document.querySelector('#editImageErrorMessage');
 
-  const editListingErrorMessage = document.querySelector("#editListingErrorMessage")
+  const editListingErrorMessage = document.querySelector('#editListingErrorMessage');
 
   for (let i = 0; i < deletePostBtn.length; i++) {
     deletePostBtn[i].addEventListener('click', () => {
-        const deletePostID = deletePostBtn[i].dataset.id
-        deletePopup.classList.remove('hidden')
-        profileContainer.classList.add('blur-sm')
-        deleteBtn.addEventListener('click', () => {
-            (async function deletePost() {
-                const response = await fetch(`${GET_POSTS_API_URL}/${deletePostID}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${accessToken}`
-                    }, 
-                });
-                if(response.ok) {
-                    location.reload()
-                } else {
-                    const error = await response.json()
-                    const errorMessage = `${error.errors[0].message}`;
-                    throw new Error(errorMessage);
-                }
-            })().catch((errorMessage) => {
-                deletePostErrorMessage.innerHTML = `${errorMessage}`
-            })
-        })
-    })
+      const deletePostID = deletePostBtn[i].dataset.id;
+      deletePopup.classList.remove('hidden');
+      profileContainer.classList.add('blur-sm');
+      deleteBtn.addEventListener('click', () => {
+        (async function deletePost() {
+          const response = await fetch(`${GET_POSTS_API_URL}/${deletePostID}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          if (response.ok) {
+            location.reload();
+          } else {
+            const error = await response.json();
+            const errorMessage = `${error.errors[0].message}`;
+            throw new Error(errorMessage);
+          }
+        })().catch((errorMessage) => {
+          deletePostErrorMessage.innerHTML = `${errorMessage}`;
+        });
+      });
+    });
   }
 
   for (let i = 0; i < editPostBtns.length; i++) {
@@ -234,38 +233,37 @@ displayUserListings().then(() => {
         } else {
           editTitleErrorMessage.classList.remove('hidden');
         }
-        let isEditFormValid = isImageValid && isTitle
-        if(isEditFormValid) {
-            let tagsString = new String(editTags.value);
-            let tagsArray = tagsString.split(' ');
-            let editPostData = {
-                title: editTitle.value,
-                description: editDescription.value,
-                tags: tagsArray,
-                media: [editImage.value],
+        let isEditFormValid = isImageValid && isTitle;
+        if (isEditFormValid) {
+          let tagsString = new String(editTags.value);
+          let tagsArray = tagsString.split(' ');
+          let editPostData = {
+            title: editTitle.value,
+            description: editDescription.value,
+            tags: tagsArray,
+            media: [editImage.value],
+          };
+          (async function editPost() {
+            const response = await fetch(`${GET_POSTS_API_URL}/${editPostID}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`,
+              },
+              body: JSON.stringify(editPostData),
+            });
+            if (response.ok) {
+              location.href = `/details.html?post_id=${editPostID}`;
+            } else {
+              const error = await response.json();
+              const errorMessage = `${error.errors[0].message}`;
+              throw new Error(errorMessage);
             }
-            console.log(editPostData);
-            (async function editPost() {
-                const response = await fetch(`${GET_POSTS_API_URL}/${editPostID}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                    body: JSON.stringify(editPostData),
-                });
-                if(response.ok) {
-                    location.href = `/details.html?post_id=${editPostID}`
-                } else {
-                    const error = await response.json()
-                    const errorMessage = `${error.errors[0].message}`;
-                    throw new Error(errorMessage);
-                }
-            })().catch((errorMessage) => {
-                editListingErrorMessage.innerHTML = `${errorMessage}`
-            })
+          })().catch((errorMessage) => {
+            editListingErrorMessage.innerHTML = `${errorMessage}`;
+          });
         } else {
-            editListingErrorMessage.innerHTML = "An error accured. Pleace try again"
+          editListingErrorMessage.innerHTML = 'An error accured. Pleace try again';
         }
       });
     });
@@ -283,7 +281,6 @@ async function displayUserBids() {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     if (!data.length) {
       noBidsMessage.classList.remove('hidden');
     } else {

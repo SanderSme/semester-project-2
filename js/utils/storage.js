@@ -70,34 +70,43 @@ function getFromLocalStorage(key) {
 const accessToken = getToken();
 
 function updateLocalStorrage(url) {
-  async function getUserData(){
+  async function getUserData() {
     const response = await fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
-    })
-    if(response.ok) {
-      const data = await response.json()
-      console.log(data);
+    });
+    if (response.ok) {
+      const data = await response.json();
       const userToSave = {
         name: data.name,
         email: data.email,
         avatar: data.avatar,
         credits: data.credits,
       };
-      saveUser(userToSave)
-      location.reload()
+      saveUser(userToSave);
+      location.reload();
     } else {
       console.log('hei');
     }
   }
-  getUserData()
+  getUserData();
 }
 
 function clearStorage() {
   localStorage.clear();
 }
 
-export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits, getUserEmail, updateLocalStorrage };
+export {
+  getUserName,
+  getToken,
+  saveToken,
+  saveUser,
+  clearStorage,
+  getUserAvatar,
+  getUserCredits,
+  getUserEmail,
+  updateLocalStorrage,
+};

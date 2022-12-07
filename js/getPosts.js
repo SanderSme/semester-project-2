@@ -55,7 +55,6 @@ async function getPosts() {
   });
   if (response.ok) {
     data = await response.json();
-    console.log(data);
     displayPosts(data);
   } else {
     const err = await response.json();
