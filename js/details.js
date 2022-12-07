@@ -1,5 +1,5 @@
-import { getToken } from './utils/storage';
-import { GET_POSTS_API_URL } from './settings/api';
+import { getToken, updateLocalStorrage } from './utils/storage';
+import { GET_POSTS_API_URL, PROFILE_API_URL } from './settings/api';
 import { splitIntoArray } from './utils/countDown';
 
 const params = window.location.search;
@@ -10,7 +10,16 @@ const singlePostDetails = document.querySelector('#singlePostDetails');
 const biddingHistory = document.querySelector('#biddingHistory');
 const noBidsMessage = document.querySelector('#noBidsMessage');
 
+const placeBidOverlay = document.querySelector('#placeBidOverlay')
+const placeBidBtn = document.querySelector("#placeBidBtn")
+const bidAmountToLowMessage = document.querySelector("#bidAmountToLowMessage")
+let bidAmountInput = document.querySelector("#bidAmountInput")
+const bidErrorMessage = document.querySelector("#bidErrorMessage")
+const bidItemTitle = document.querySelector("#bidItemTitle")
+
+
 const SINGLE_POST_API_URL = `${GET_POSTS_API_URL}/${postID}?_bids=true&_seller=true`;
+const BID_ON_LISTING_API = `${GET_POSTS_API_URL}/${postID}/bids`
 
 if (!accessToken) {
   location.href = '../login.html';
@@ -98,8 +107,8 @@ async function getPostByID() {
       noBidsMessage.classList.add('hidden');
       highestBid = `<div class="flex justify-between border-b border-b-stone-700 py-2">
         <div class="flex gap-3">
-          <p class="text-stone-400">${standingBidCreated}</p>
-          <p>${standigBidName}</p>
+          <p class="text-green-600">${standingBidCreated}</p>
+          <p class="text-green-400">${standigBidName}</p>
         </div>
         <p class="text-green-400">${standingBid} c</p>
       </div>`;
@@ -125,10 +134,10 @@ async function getPostByID() {
         noBidsMessage.classList.add('hidden');
         listOfBiddings += `<div class="flex justify-between border-b border-b-stone-700 py-2">
             <div class="flex gap-3">
-              <p class="text-stone-400">${bidCreated}</p>
-              <p class="text-stone-200">${bidName}</p>
+              <p class="text-orange-500">${bidCreated}</p>
+              <p class="text-orange-300">${bidName}</p>
             </div>
-            <p class="text-stone-200">${bidAmount} c</p>
+            <p class="text-orange-300">${bidAmount} c</p>
           </div>`;
       } else {
         noBidsMessage.classList.remove('hidden');
@@ -178,7 +187,8 @@ async function getPostByID() {
         <p>Minutes</p>
       </div>
     </div>
-    <div class="flex justify-center gap-2 mt-6 items-center">
+    <div class="flex flex-col mt-6">
+    <div class="flex flex-row gap-2 justify-center items-center">
       <input type="number" value="${biddingValue}" id="biddingValue" class="text-black p-1 w-20 h-8 rounded-md" />
       <button
         type="button"
@@ -187,18 +197,96 @@ async function getPostByID() {
       >Place bid
     </button>
     </div>
+    <p class="text-red-600 mx-auto mt-2 hidden" id="amountToLowMessage">Bid amount is lower than the standing bid</p>
+    </div>
   </div>
   ${postMedia}`;
   biddingHistory.innerHTML = `${displayHighestBid()} ${displayBiddingHistory()}`;
   const countDownContainer = document.querySelector('#countDown');
   const placeOrderBtn = document.querySelector('#placeOrderBtn');
+  
+  const stopBiddingBtn = document.querySelector("#stopBiddingBtn")
+  const biddingValueInput = document.querySelector("#biddingValue")
+  const amountToLowMessage = document.querySelector("#amountToLowMessage")
+  
+  bidAmountInput.value = biddingValue
+  bidAmountInput.addEventListener("click", () => {
+    if(bidAmountInput.value <= standingBid) {
+      placeBidBtn.classList.add('opacity-70');
+    placeBidBtn.classList.remove('hover:bg-green-900');
+    placeBidBtn.classList.add('cursor-no-drop')
+    bidAmountToLowMessage.classList.remove('hidden')
+      placeBidBtn.disabled = true
+    } else {
+      placeBidBtn.disabled = false
+      placeBidBtn.classList.remove('opacity-70');
+    placeBidBtn.classList.add('hover:bg-green-900');
+    placeBidBtn.classList.remove('cursor-no-drop')
+    bidAmountToLowMessage.classList.add('hidden')
+    }
+  })
   console.log(countDownContainer);
+  placeOrderBtn.addEventListener('click', () => {
+    placeBidOverlay.classList.remove('hidden')
+    singlePostDetails.classList.add("blur-sm")
+    bidItemTitle.innerHTML = `on "${postTitle}"?`
+  })
+
+  stopBiddingBtn.addEventListener("click", () => {
+    placeBidOverlay.classList.add('hidden')
+    singlePostDetails.classList.remove('blur-sm')
+  })
+  biddingValueInput.addEventListener('click', () => {
+    console.log(biddingValueInput.value);
+    if(biddingValueInput.value <= standingBid) {
+      placeOrderBtn.classList.add('opacity-70');
+    placeOrderBtn.classList.remove('hover:bg-green-900');
+    placeOrderBtn.classList.add('cursor-no-drop')
+    amountToLowMessage.classList.remove('hidden')
+      placeOrderBtn.disabled = true
+    } else {
+      placeOrderBtn.disabled = false
+      placeOrderBtn.classList.remove('opacity-70');
+    placeOrderBtn.classList.add('hover:bg-green-900');
+    placeOrderBtn.classList.remove('cursor-no-drop')
+    amountToLowMessage.classList.add('hidden')
+    }
+  })
+
   if (timeleft < 0) {
     countDownContainer.innerHTML = `<p class="text-xl">Auction Ended</p>`;
     placeOrderBtn.classList.add('opacity-70');
     placeOrderBtn.classList.remove('hover:bg-green-900');
-    placeOrderBtn.classList.add('cursor-no-drop');
+    placeOrderBtn.classList.add('cursor-no-drop')
+    placeOrderBtn.disabled = true
   }
 }
+
+placeBidOverlay.addEventListener('submit', function(event) {
+  event.preventDefault()
+  const amountToBid = {
+    amount: parseInt(bidAmountInput.value)
+  }
+  async function placeBid() {
+    const response = await fetch(BID_ON_LISTING_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify(amountToBid)
+    });
+    if(response.ok) {
+      updateLocalStorrage(PROFILE_API_URL);
+    } else {
+      const error = response.json()
+      console.log(error);
+      bidErrorMessage.innerHTML = "There was an error, pleace try again"
+    }
+  }
+  placeBid()
+
+})
+
 
 getPostByID();

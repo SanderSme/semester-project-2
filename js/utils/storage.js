@@ -67,8 +67,37 @@ function getFromLocalStorage(key) {
   }
 }
 
+const accessToken = getToken();
+
+function updateLocalStorrage(url) {
+  async function getUserData(){
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+    })
+    if(response.ok) {
+      const data = await response.json()
+      console.log(data);
+      const userToSave = {
+        name: data.name,
+        email: data.email,
+        avatar: data.avatar,
+        credits: data.credits,
+      };
+      saveUser(userToSave)
+      location.reload()
+    } else {
+      console.log('hei');
+    }
+  }
+  getUserData()
+}
+
 function clearStorage() {
   localStorage.clear();
 }
 
-export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits, getUserEmail };
+export { getUserName, getToken, saveToken, saveUser, clearStorage, getUserAvatar, getUserCredits, getUserEmail, updateLocalStorrage };

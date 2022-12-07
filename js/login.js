@@ -56,7 +56,6 @@ if (loginForm) {
         });
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           saveToken(data.accessToken);
           const userToSave = {
             name: data.name,

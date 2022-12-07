@@ -5,7 +5,7 @@ import {
   CHANGE_AVATAR_URL,
   GET_POSTS_API_URL,
 } from './settings/api';
-import { getToken } from './utils/storage';
+import { getToken, updateLocalStorrage } from './utils/storage';
 import { isValidUrl } from './utils/validation';
 
 const accessToken = getToken();
@@ -18,6 +18,7 @@ const profileInfoContainer = document.querySelector('#profileInfoContainer');
 const profileContainer = document.querySelector('#profile-container');
 const changeAvatarForm = document.querySelector('#changeAvatarForm');
 const avatarInput = document.querySelector('#avatarInput');
+const generalErrorMessage = document.querySelector("#generalErrorMessage")
 
 const userListingsContainer = document.querySelector('#userListingsContainer');
 const userBidsContainer = document.querySelector('#userBidsContainer');
@@ -56,12 +57,15 @@ changeAvatarForm.addEventListener('submit', function (event) {
         body: JSON.stringify(avatarData),
       });
       if (response.ok) {
-        location.reload();
+        updateLocalStorrage(PROFILE_API_URL)
       } else {
         const error = await response.json();
-        console.log(error);
-      }
-    })();
+        const errorMessage = error.errors[0].message
+        throw new Error(errorMessage)
+        }
+    })().catch((errorMessage) => {
+        generalErrorMessage.innerHTML = `${errorMessage}`
+    })
   }
 });
 
@@ -301,7 +305,7 @@ async function displayUserBids() {
         <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           ${postMedia}
           <div
-            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit w-48 lg:w-56 rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
             <p class="text-lg py-1">${postTitle}</p>
             <p class="text-sm md:mt-2">Your bid: ${postBids} c</p>
