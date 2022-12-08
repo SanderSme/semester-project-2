@@ -30,6 +30,7 @@ const deleteBtn = document.querySelector('#deleteBtn');
 const stopDeleteBtn = document.querySelector('#stopDeleteBtn');
 
 const editPostForm = document.querySelector('#editPostForm');
+const editPostMediaInputs = document.querySelectorAll('.editPostMedia');
 const stopEditPostBtn = document.querySelector('#stopEditPostBtn');
 
 changeAvatarForm.addEventListener('submit', function (event) {
@@ -142,7 +143,7 @@ async function displayUserListings() {
       <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
         ${postMedia}
         <div
-          class="relative text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          class="relative w-48 lg:w-56 text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
         >
           <p class="text-lg py-1">${postTitle}</p>
           <p class="text-sm md:mt-2">Standing bid: ${standingBid} c</p>
@@ -179,7 +180,11 @@ displayUserListings().then(() => {
   const editTags = document.querySelector('#editTags');
 
   const editImage = document.querySelector('#editImage');
+  const editImage2 = document.querySelector('#editImage2');
+  const editImage3 = document.querySelector('#editImage3');
   const editImageErrorMessage = document.querySelector('#editImageErrorMessage');
+  const editImage2ErrorMessage = document.querySelector('#editImage2ErrorMessage');
+  const editImage3ErrorMessage = document.querySelector('#editImage3ErrorMessage');
 
   const editListingErrorMessage = document.querySelector('#editListingErrorMessage');
 
@@ -226,6 +231,22 @@ displayUserListings().then(() => {
         } else {
           editImageErrorMessage.classList.remove('hidden');
         }
+        let isImage2Valid = false;
+        isImage2Valid = isValidUrl(editImage2.value) || editImage2.value === '';
+        if (isImage2Valid) {
+          editImage2ErrorMessage.classList.add('hidden');
+          isImage2Valid = true;
+        } else {
+          editImage2ErrorMessage.classList.remove('hidden');
+        }
+        let isImage3Valid = false;
+        isImage3Valid = isValidUrl(editImage3.value) || editImage3.value === '';
+        if (isImage3Valid) {
+          editImage3ErrorMessage.classList.add('hidden');
+          isImage3Valid = true;
+        } else {
+          editImage3ErrorMessage.classList.remove('hidden');
+        }
         let isTitle = false;
         if (editTitle.value.trim().length > 0) {
           editTitleErrorMessage.classList.add('hidden');
@@ -237,11 +258,17 @@ displayUserListings().then(() => {
         if (isEditFormValid) {
           let tagsString = new String(editTags.value);
           let tagsArray = tagsString.split(' ');
+          let editPostMedia = [];
+          for (let i = 0; i < editPostMediaInputs.length; i++) {
+            if (editPostMediaInputs[i].value) {
+              editPostMedia.push(editPostMediaInputs[i].value);
+            }
+          }
           let editPostData = {
             title: editTitle.value,
             description: editDescription.value,
             tags: tagsArray,
-            media: [editImage.value],
+            media: editPostMedia,
           };
           (async function editPost() {
             const response = await fetch(`${GET_POSTS_API_URL}/${editPostID}`, {
@@ -295,7 +322,7 @@ async function displayUserBids() {
           postMedia = `<div class="bg-[url('./img/stock-img.svg')] w-48 lg:w-56 min-h-[192px] bg-center bg-no-repeat rounded-l-xl md:rounded-t-xl md:rounded-bl-none bg-[#001321]"></div>`;
         }
         let postBids = data[i].amount;
-        const postID = data[i].id;
+        const postID = data[i].listing.id;
         userBidsContainer.innerHTML += `<div
         class="min-w-[100vw] sm:min-w-[70vw] md:min-w-[40vw] lg:min-w-[30vw] xl:min-w-[20vw] flex justify-center z-40"
       >

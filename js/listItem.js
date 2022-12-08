@@ -6,7 +6,12 @@ const accessToken = getToken();
 const listItemForm = document.querySelector('#listItemForm');
 
 const image = document.querySelector('#image');
+const image2 = document.querySelector('#image2');
+const image3 = document.querySelector('#image3');
 const imageErrorMessage = document.querySelector('#imageErrorMessage');
+const image2ErrorMessage = document.querySelector('#image2ErrorMessage');
+const image3ErrorMessage = document.querySelector('#image3ErrorMessage');
+const postMediaInputs = document.querySelectorAll('.postMedia');
 
 const title = document.querySelector('#title');
 const titleErrorMessage = document.querySelector('#titleErrorMessage');
@@ -32,6 +37,20 @@ listItemForm.addEventListener('submit', function (event) {
   } else {
     imageErrorMessage.classList.remove('hidden');
   }
+  let isImage2Valid = false;
+  isImage2Valid = isValidUrl(image2.value) || image2.value === '';
+  if (isImage2Valid) {
+    image2ErrorMessage.classList.add('hidden');
+  } else {
+    image2ErrorMessage.classList.remove('hidden');
+  }
+  let isImage3Valid = false;
+  isImage3Valid = isValidUrl(image3.value) || image3.value === '';
+  if (isImage3Valid) {
+    image3ErrorMessage.classList.add('hidden');
+  } else {
+    image3ErrorMessage.classList.remove('hidden');
+  }
   let isTitle = false;
   if (title.value.trim().length > 0) {
     titleErrorMessage.classList.add('hidden');
@@ -46,26 +65,25 @@ listItemForm.addEventListener('submit', function (event) {
   } else {
     auctionEndsError.classList.remove('hidden');
   }
-  let formIsValid = isImageValid && isTitle && isAuctionEnds;
+  let formIsValid = isImageValid && isImage2Valid && isImage3Valid && isTitle && isAuctionEnds;
   if (formIsValid) {
     let tagsString = new String(tags.value);
     let tagsArray = tagsString.split(' ');
     const date = new Date(auctionEnds.value);
+    let postMedia = [];
+    for (let i = 0; i < postMediaInputs.length; i++) {
+      if (postMediaInputs[i].value) {
+        postMedia.push(postMediaInputs[i].value);
+      }
+    }
     let postData = {
       title: title.value,
       description: description.value,
       tags: tagsArray,
-      media: [image.value],
+      media: postMedia,
       endsAt: date,
     };
-    if (!image.value) {
-      postData = {
-        title: title.value,
-        description: description.value,
-        tags: tagsArray,
-        endsAt: date,
-      };
-    }
+    console.log(postData);
     (async function createListing() {
       const response = await fetch(CREATE_POST_API_URL, {
         method: 'POST',

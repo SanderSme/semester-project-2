@@ -38,7 +38,7 @@
           <div class="flex flex-col md:flex-row md:gap-5 mt-8">
             <div class="w-full md:w-1/2 p-4 mx-auto md:mx-0 bg-stone-700 rounded-xl flex flex-col justify-center">
               <div class="fa fa-photo fa-5x text-stone-500 mx-auto"></div>
-              <div class="w-full mx-auto flex flex-col mt-4">
+              <div class="w-full lg:w-2/3 mx-auto flex flex-col mt-4">
                 <label for="image" class="text-white p-1">Image URL (optional)</label>
                 <input
                   type="text"
@@ -46,9 +46,27 @@
                   id="image"
                   accept="image/png, image/jpeg"
                   placeholder="Paste url here"
-                  class="text-black p-1 rounded-lg"
+                  class="postMedia text-black p-1 rounded-lg"
                 />
                 <p id="imageErrorMessage" class="text-red-600 hidden">Must be a valid URL</p>
+                <input
+                  type="text"
+                  name="image2"
+                  id="image2"
+                  accept="image/png, image/jpeg"
+                  placeholder="Paste url here"
+                  class="postMedia text-black p-1 rounded-lg mt-4"
+                />
+                <p id="image2ErrorMessage" class="text-red-600 hidden">Must be a valid URL</p>
+                <input
+                  type="text"
+                  name="image3"
+                  id="image3"
+                  accept="image/png, image/jpeg"
+                  placeholder="Paste url here"
+                  class="postMedia text-black p-1 rounded-lg mt-4"
+                />
+                <p id="image3ErrorMessage" class="text-red-600 hidden">Must be a valid URL</p>
               </div>
             </div>
             <div class="md:w-1/2">
@@ -81,7 +99,7 @@
           <button type="submit" class="mt-8 py-2 px-8 mx-auto bg-green-800 hover:bg-green-900 p-2 rounded-xl">
             List Item
           </button>
-          <p id="listItemErrorMessage" class="text-red-600 mx-auto mt-4"></p>
+          <p id="listItemErrorMessage" class="text-red-600 mx-auto mt-4 max-w-xl break-words"></p>
         </form>
       </div>
     </main>

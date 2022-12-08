@@ -89,7 +89,7 @@ function updateLocalStorrage(url) {
       saveUser(userToSave);
       location.reload();
     } else {
-      console.log('hei');
+      console.log('There was an error');
     }
   }
   getUserData();

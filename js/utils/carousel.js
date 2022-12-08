@@ -3,8 +3,7 @@ function carouselFunction() {
   const rightBtn = document.querySelector('#rightBtn');
 
   const slides = document.querySelectorAll('.slide');
-  const carouselCounter = document.querySelector("#carouselCounter")
-
+  const carouselCounter = document.querySelector('#carouselCounter');
 
   slides.forEach((slide, index) => {
     slide.style.transform = `translateX(${index * 100}%)`;
@@ -13,7 +12,7 @@ function carouselFunction() {
   let currentSlide = 0;
 
   let maxSlide = slides.length - 1;
-  carouselCounter.innerHTML = `1/${maxSlide + 1}`
+  carouselCounter.innerHTML = `1/${maxSlide + 1}`;
 
   rightBtn.addEventListener('click', function () {
     if (currentSlide === maxSlide) {
@@ -21,7 +20,7 @@ function carouselFunction() {
     } else {
       currentSlide++;
     }
-    carouselCounter.innerHTML = `${currentSlide + 1}/${maxSlide + 1}`
+    carouselCounter.innerHTML = `${currentSlide + 1}/${maxSlide + 1}`;
 
     slides.forEach((slide, index) => {
       slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
@@ -34,7 +33,7 @@ function carouselFunction() {
     } else {
       currentSlide--;
     }
-    carouselCounter.innerHTML = `${currentSlide + 1}/${maxSlide + 1}`
+    carouselCounter.innerHTML = `${currentSlide + 1}/${maxSlide + 1}`;
 
     slides.forEach((slide, index) => {
       slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
@@ -42,5 +41,4 @@ function carouselFunction() {
   });
 }
 
-
-export {carouselFunction}
+export { carouselFunction };

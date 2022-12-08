@@ -40,7 +40,7 @@
         <h1 class="text-white text-xl mx-auto mb-6">Place bid</h1>
         <div class="mx-auto flex flex-col md:flex-row items-center text-lg">
           <label for="bidAmountInput" class="text-white mr-2 mb-2 md:mb-0">Do you want to bid </label>
-          <input type="number" value="" id="bidAmountInput" class="text-black p-1 w-20 h-8 rounded-md" />
+          <input type="number" value="" min="1" id="bidAmountInput" class="text-black p-1 w-20 h-8 rounded-md" />
           <p id="bidItemTitle" class="text-white ml-2 mt-2 md:mt-0"></p>
         </div>
         <button
@@ -59,24 +59,22 @@
         class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black"
         id="singlePostDetails"
       >
-        <div class="text-white flex flex-col md:w-1/2 md:ml-8" id="listingContainer">
-        </div>
+        <div class="text-white flex flex-col md:w-1/2 md:ml-8" id="listingContainer"></div>
         <div class="w-full sm:w-2/3 md:w-1/2 mx-auto mt-6 h-72 md:h-96 lg:h-[30rem] relative">
-          <div id="imgContainer" class="w-full h-full relative overflow-hidden">
-          </div>
+          <div id="imgContainer" class="w-full h-full relative overflow-hidden"></div>
           <div id="buttonContainer" class="hidden">
             <p id="carouselCounter" class="absolute top-[-1.7rem] left-2 text-white"></p>
-          <button
-            type="button"
-            id="leftBtn"
-            class="fa fa-chevron-left fa-2x text-white absolute top-[50%] translate-y-[-50%] left-[-1.9rem]"
-          ></button>
-          <button
-            type="button"
-            id="rightBtn"
-            class="fa fa-chevron-right fa-2x text-white absolute top-[50%] translate-y-[-50%] right-[-1.9rem]"
-          ></button>
-        </div>
+            <button
+              type="button"
+              id="leftBtn"
+              class="fa fa-chevron-left fa-2x text-white absolute top-[50%] translate-y-[-50%] left-[-1.9rem]"
+            ></button>
+            <button
+              type="button"
+              id="rightBtn"
+              class="fa fa-chevron-right fa-2x text-white absolute top-[50%] translate-y-[-50%] right-[-1.9rem]"
+            ></button>
+          </div>
         </div>
       </div>
       <div class="mt-16 max-w-[90%] lg:max-w-6xl mx-auto text-white">

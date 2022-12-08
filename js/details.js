@@ -11,9 +11,9 @@ const accessToken = getToken();
 const singlePostDetails = document.querySelector('#singlePostDetails');
 const biddingHistory = document.querySelector('#biddingHistory');
 const noBidsMessage = document.querySelector('#noBidsMessage');
-const listingContainer = document.querySelector("#listingContainer")
-const imgContainer = document.querySelector("#imgContainer")
-const buttonContainer = document.querySelector("#buttonContainer")
+const listingContainer = document.querySelector('#listingContainer');
+const imgContainer = document.querySelector('#imgContainer');
+const buttonContainer = document.querySelector('#buttonContainer');
 
 const placeBidOverlay = document.querySelector('#placeBidOverlay');
 const placeBidBtn = document.querySelector('#placeBidBtn');
@@ -48,26 +48,26 @@ async function getPostByID() {
   }
   const postAuthor = data.seller.name;
   let postTags = data.tags;
-  let postImages = data.media
-  for(let i = 0; i < postImages.length; i++) {
-    if(postImages[i]) {
+  let postImages = data.media;
+  for (let i = 0; i < postImages.length; i++) {
+    if (postImages[i]) {
       imgContainer.innerHTML += `<div class="slide w-full h-full absolute transition-all">
       <img src="${postImages[i]}" alt="${postTitle}" id="img1" class="rounded-xl w-full h-full object-cover" />
-    </div>`
-    buttonContainer.classList.remove('hidden')
-    carouselFunction()
+    </div>`;
+      buttonContainer.classList.remove('hidden');
+      carouselFunction();
     }
   }
-  if(!data.media[1]) {
-    buttonContainer.classList.add('hidden')
-}
+  if (!data.media[1]) {
+    buttonContainer.classList.add('hidden');
+  }
   if (!data.media[0]) {
     imgContainer.innerHTML = `<img
     src="./img/stock-img.svg"
     alt="${postTitle}"
     class="mt-8 md:mt-0 rounded-xl w-full mx-auto md:h-full md:max-h-96 md:max-w-sm lg:max-w-none lg:max-h-screen"
   />`;
-  buttonContainer.classList.add('hidden')
+    buttonContainer.classList.add('hidden');
   }
   function displayTags() {
     let listOfTags = ``;
@@ -196,6 +196,7 @@ async function getPostByID() {
       <input
         type="number"
         value="${biddingValue}"
+        min="1"
         id="biddingValue"
         class="text-black p-1 w-20 h-8 rounded-md"
       />
@@ -206,64 +207,7 @@ async function getPostByID() {
     <p class="text-red-600 mx-auto mt-2 hidden" id="amountToLowMessage">
       Bid amount is lower than the standing bid
     </p>
-  </div>`
-
-  // singlePostDetails.innerHTML = `
-  // <div class="text-white flex flex-col md:w-1/2 md:ml-8">
-  //   <h1 class="text-3xl lg:text-5xl mx-auto">${postTitle}</h1>
-  //   <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
-  //     <p>Standing bid:</p>
-  //     <p>${standingBid} c</p>
-  //   </div>
-  //   <div class="flex w-48 lg:w-96 lg:mx-auto md:justify-start mt-4">
-  //     <p class="mr-2 font-semibold">Sold by:</p>
-  //     <p>${postAuthor}</p>
-  //   </div>
-  //   <p class="mt-4 lg:w-96 lg:mx-auto">
-  //     ${postBody}
-  //   </p>
-  //   <div class="flex lg:w-96 lg:mx-auto justify-start mt-4">
-  //     <p class="mr-4 font-semibold">Tags:</p>
-  //     <p>${displayTags()}</p>
-  //   </div>
-  //   <p class="mt-8 mb-4 text-xl lg:w-72 lg:mx-auto">Auction ends in:</p>
-  //   <div class="flex mx-auto gap-5 text-stone-400" id="countDown">
-  //     <div class="flex flex-col items-center">
-  //       <div class="flex gap-1">
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${daysSplit[0]}</p>
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${daysSplit[1]}</p>
-  //       </div>
-  //       <p>Days</p>
-  //     </div>
-  //     <div class="flex flex-col items-center">
-  //       <div class="flex gap-1">
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${hoursSplit[0]}</p>
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${hoursSplit[1]}</p>
-  //       </div>
-  //       <p>Hours</p>
-  //     </div>
-  //     <div class="flex flex-col items-center">
-  //       <div class="flex gap-1">
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${minutesSplit[0]}</p>
-  //         <p class="px-3 py-1 bg-stone-800 text-lg rounded-md">${minutesSplit[1]}</p>
-  //       </div>
-  //       <p>Minutes</p>
-  //     </div>
-  //   </div>
-  //   <div class="flex flex-col mt-6">
-  //   <div class="flex flex-row gap-2 justify-center items-center">
-  //     <input type="number" value="${biddingValue}" id="biddingValue" class="text-black p-1 w-20 h-8 rounded-md" />
-  //     <button
-  //       type="button"
-  //       id="placeOrderBtn"
-  //       class="px-8 py-2 bg-green-800 hover:bg-green-900 rounded-xl"
-  //     >Place bid
-  //   </button>
-  //   </div>
-  //   <p class="text-red-600 mx-auto mt-2 hidden" id="amountToLowMessage">Bid amount is lower than the standing bid</p>
-  //   </div>
-  // </div>
-  // ${postMedia}`;
+  </div>`;
   biddingHistory.innerHTML = `${displayHighestBid()} ${displayBiddingHistory()}`;
   const countDownContainer = document.querySelector('#countDown');
   const placeOrderBtn = document.querySelector('#placeOrderBtn');
@@ -340,9 +284,9 @@ placeBidOverlay.addEventListener('submit', function (event) {
     if (response.ok) {
       updateLocalStorrage(PROFILE_API_URL);
     } else {
-      const error = response.json();
+      const error = await response.json();
       console.log(error);
-      bidErrorMessage.innerHTML = 'There was an error, pleace try again';
+      bidErrorMessage.innerHTML = `${error.errors[0].message}`;
     }
   }
   placeBid();
