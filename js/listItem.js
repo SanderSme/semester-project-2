@@ -83,7 +83,6 @@ listItemForm.addEventListener('submit', function (event) {
       media: postMedia,
       endsAt: date,
     };
-    console.log(postData);
     (async function createListing() {
       const response = await fetch(CREATE_POST_API_URL, {
         method: 'POST',
