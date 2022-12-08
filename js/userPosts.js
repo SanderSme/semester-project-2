@@ -113,6 +113,7 @@ async function displayUserListings() {
   });
 
   if (response.ok) {
+    userListingsContainer.innerHTML = '';
     const data = await response.json();
     if (!data.length) {
       noListingsMessage.classList.remove('hidden');

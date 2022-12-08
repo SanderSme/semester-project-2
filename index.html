@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col lg:flex-row" id="headerUserInfo"></div>
       </div>
-      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full z-40"></nav>
+      <nav id="navLinksMobile" class="lg:hidden text-white bg-stone-800 hidden absolute w-full h-full"></nav>
     </header>
     <main class="mb-32">
       <div class="bg-hero-banner bg-cover h-64 md:h-72 lg:h-[500px] flex justify-center">
@@ -67,8 +67,20 @@
       <ul class="w-11/12 lg:max-w-6xl mx-auto md:flex md:justify-around md:flex-wrap md:gap-4" id="postsContainer">
         <li id="getPostsErrorMessage" class="text-red-600 mx-auto mt-4 text-xl hidden"></li>
         <li id="NoPostsMessage" class="text-white mt-4 text-xl hidden">There are currently no posts to display</li>
-        <li>
-          <svg class="animate-spin h-12 w-1 mr-3 ... bg-white mt-12" viewBox="0 0 24 24"></svg>
+        <li class="flex justify-center">
+          <svg
+            class="animate-spin mr-3 mt-24"
+            width="48"
+            height="48"
+            viewBox="0 0 220 220"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M216.98 85.6634L207.257 75.9409C203.23 71.9134 196.7 71.9134 192.673 75.9409L190.242 78.3716L141.628 29.7581L144.059 27.3273C148.087 23.2999 148.087 16.7704 144.059 12.7433L134.337 3.02035C130.309 -1.00711 123.78 -1.00711 119.753 3.02035L66.2776 56.4954C62.2501 60.5229 62.2501 67.0524 66.2776 71.0794L76.0001 80.802C80.0276 84.8294 86.5571 84.8294 90.5842 80.802L93.0149 78.3712L110.03 95.386L75.2078 130.208L72.777 127.777C67.4072 122.407 58.7013 122.407 53.3315 127.777L4.02748 177.082C-1.34233 182.452 -1.34233 191.158 4.02748 196.528L23.473 215.973C28.8428 221.343 37.5487 221.343 42.9185 215.973L92.223 166.669C97.5928 161.299 97.5928 152.593 92.223 147.223L89.7922 144.792L124.614 109.97L141.629 126.985L139.198 129.416C135.171 133.443 135.171 139.973 139.198 144L148.921 153.723C152.948 157.75 159.478 157.75 163.505 153.723L216.98 100.247C221.007 96.2204 221.007 89.6909 216.98 85.6634V85.6634Z"
+              fill="white"
+            />
+          </svg>
         </li>
       </ul>
     </main>

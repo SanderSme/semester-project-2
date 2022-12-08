@@ -1,5 +1,5 @@
 const userListingsContainer = document.querySelector('#userListingsContainer');
-const userBidsContainer = document.querySelector("#userBidsContainer")
+const userBidsContainer = document.querySelector('#userBidsContainer');
 
 userListingsContainer.addEventListener('wheel', (event) => {
   event.preventDefault();

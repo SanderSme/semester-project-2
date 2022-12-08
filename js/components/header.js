@@ -8,10 +8,3 @@ hamburgerMeny.addEventListener('click', () => {
   hamburgerMeny.classList.toggle('fa-times');
   body.classList.toggle('overflow-hidden');
 });
-
-// const searchBtn = document.querySelector('#searchBtn');
-// const searchBar = document.querySelector('#searchBar');
-
-// searchBtn.addEventListener('click', () => {
-//   searchBar.classList.toggle('opacity-0');
-// });

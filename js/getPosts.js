@@ -16,8 +16,8 @@ const searchBar = document.querySelector('#searchBar');
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredPosts = data.filter((post) => {
-    const postTags = post.tags
-    return (post.title.toLowerCase().includes(searchString) || postTags.toString().includes(searchString))
+    const postTags = post.tags;
+    return post.title.toLowerCase().includes(searchString) || postTags.toString().includes(searchString);
   });
   displayPosts(filteredPosts);
 });
