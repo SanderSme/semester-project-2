@@ -22,6 +22,8 @@ let bidAmountInput = document.querySelector('#bidAmountInput');
 const bidErrorMessage = document.querySelector('#bidErrorMessage');
 const bidItemTitle = document.querySelector('#bidItemTitle');
 
+const loadingSymbol = document.querySelector("#loadingSymbol")
+
 const SINGLE_POST_API_URL = `${GET_POSTS_API_URL}/${postID}?_bids=true&_seller=true`;
 const BID_ON_LISTING_API = `${GET_POSTS_API_URL}/${postID}/bids`;
 
@@ -153,7 +155,7 @@ async function getPostByID() {
     }
     return listOfBiddings;
   }
-  listingContainer.innerHTML = `<h1 class="text-3xl lg:text-5xl mx-auto">${postTitle}</h1>
+  listingContainer.innerHTML = `<h1 class="text-3xl lg:text-5xl mx-auto max-w-[200px] sm:max-w-[300px] lg:max-w-[500px] break-words">${postTitle}</h1>
   <div class="flex w-48 lg:w-72 justify-between py-2 px-4 bg-sky-900 rounded-xl mt-4 mx-auto">
     <p>Standing bid:</p>
     <p>${standingBid} c</p>

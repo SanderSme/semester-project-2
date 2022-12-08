@@ -24,6 +24,8 @@ const userListingsContainer = document.querySelector('#userListingsContainer');
 const userBidsContainer = document.querySelector('#userBidsContainer');
 
 const noListingsMessage = document.querySelector('#noListingsMessage');
+const loadingSymbol = document.querySelector("#loadingSymbol")
+const loadingSymbol2 = document.querySelector("#loadingSymbol2")
 
 const deletePopup = document.querySelector('#deletePopup');
 const deleteBtn = document.querySelector('#deleteBtn');
@@ -103,6 +105,16 @@ async function displayProfileInfo() {
   }
 }
 
+  const editTitle = document.querySelector('#editTitle');
+
+  const editDescription = document.querySelector('#editDescription');
+
+  const editTags = document.querySelector('#editTags');
+
+  const editImage = document.querySelector('#editImage');
+  const editImage2 = document.querySelector('#editImage2');
+  const editImage3 = document.querySelector('#editImage3');
+
 async function displayUserListings() {
   const response = await fetch(USER_POSTS_API_URL, {
     method: 'GET',
@@ -113,7 +125,7 @@ async function displayUserListings() {
   });
 
   if (response.ok) {
-    userListingsContainer.innerHTML = '';
+    loadingSymbol.classList.add('hidden')
     const data = await response.json();
     if (!data.length) {
       noListingsMessage.classList.remove('hidden');
@@ -144,9 +156,9 @@ async function displayUserListings() {
       <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
         ${postMedia}
         <div
-          class="relative w-48 lg:w-56 text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+          class="relative w-48 lg:w-56 text-white bg-[#001321] flex flex-col items-center justify-around px-8 py-2 min-h-[160px] md:h-fit rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
         >
-          <p class="text-lg py-1">${postTitle}</p>
+          <p class="text-lg py-1 max-w-[140px] md:max-w-[160px] xl:max-w-[200px] break-words">${postTitle}</p>
           <p class="text-sm md:mt-2">Standing bid: ${standingBid} c</p>
           <a href="./details.html?post_id=${postID}" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           <button data-id="${postID}" class="edit-post-btn fa fa-edit absolute top-2 md:top-auto md:bottom-2 right-2 text-stone-400"></button>
@@ -173,16 +185,8 @@ displayUserListings().then(() => {
 
   const deletePostErrorMessage = document.querySelector('#deletePostErrorMessage');
 
-  const editTitle = document.querySelector('#editTitle');
   const editTitleErrorMessage = document.querySelector('#editTitleErrorMessage');
-
-  const editDescription = document.querySelector('#editDescription');
-
-  const editTags = document.querySelector('#editTags');
-
-  const editImage = document.querySelector('#editImage');
-  const editImage2 = document.querySelector('#editImage2');
-  const editImage3 = document.querySelector('#editImage3');
+  
   const editImageErrorMessage = document.querySelector('#editImageErrorMessage');
   const editImage2ErrorMessage = document.querySelector('#editImage2ErrorMessage');
   const editImage3ErrorMessage = document.querySelector('#editImage3ErrorMessage');
@@ -308,6 +312,7 @@ async function displayUserBids() {
   });
 
   if (response.ok) {
+    loadingSymbol2.classList.add('hidden')
     const data = await response.json();
     if (!data.length) {
       noBidsMessage.classList.remove('hidden');
@@ -330,9 +335,9 @@ async function displayUserBids() {
         <div class="flex md:flex-col justify-center mt-12 md:max-w-[300px]">
           ${postMedia}
           <div
-            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 md:h-fit w-48 lg:w-56 rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
+            class="text-white bg-[#001321] flex flex-col items-center justify-around px-8 h-48 py-2 min-h-[160px] w-48 lg:w-56 rounded-r-xl md:rounded-b-xl md:rounded-tr-none"
           >
-            <p class="text-lg py-1">${postTitle}</p>
+            <p class="text-lg py-1 max-w-[140px] md:max-w-[160px] xl:max-w-[200px] break-words">${postTitle}</p>
             <p class="text-sm md:mt-2">Your bid: ${postBids} c</p>
             <a href="./details.html?post_id=${postID}" class="place-self-center md:my-7 py-2 px-8 bg-sky-900 rounded-lg">Details</a>
           </div>
