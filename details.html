@@ -56,10 +56,27 @@
         <p class="text-red-600 mx-auto mt-2" id="bidErrorMessage"></p>
       </form>
       <div
-        class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black"
+        class="mt-8 max-w-[90%] lg:max-w-6xl mx-auto bg-[#001321] py-8 px-10 rounded-xl flex flex-col md:flex-row-reverse md:gap-10 shadow-md shadow-black relative"
         id="singlePostDetails"
       >
-        <div class="text-white flex flex-col md:w-1/2 md:ml-8" id="listingContainer"></div>
+      <p id="detailsErrorMessage" class="text-red-600 text-lg absolute left-[50%] translate-x-[-50%]"></p>
+      <div id="loadingSymbol" class="absolute left-[50%] translate-x-[-50%]">
+        <svg
+          class="animate-spin mr-3 mt-24"
+          width="48"
+          height="48"
+          viewBox="0 0 220 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M216.98 85.6634L207.257 75.9409C203.23 71.9134 196.7 71.9134 192.673 75.9409L190.242 78.3716L141.628 29.7581L144.059 27.3273C148.087 23.2999 148.087 16.7704 144.059 12.7433L134.337 3.02035C130.309 -1.00711 123.78 -1.00711 119.753 3.02035L66.2776 56.4954C62.2501 60.5229 62.2501 67.0524 66.2776 71.0794L76.0001 80.802C80.0276 84.8294 86.5571 84.8294 90.5842 80.802L93.0149 78.3712L110.03 95.386L75.2078 130.208L72.777 127.777C67.4072 122.407 58.7013 122.407 53.3315 127.777L4.02748 177.082C-1.34233 182.452 -1.34233 191.158 4.02748 196.528L23.473 215.973C28.8428 221.343 37.5487 221.343 42.9185 215.973L92.223 166.669C97.5928 161.299 97.5928 152.593 92.223 147.223L89.7922 144.792L124.614 109.97L141.629 126.985L139.198 129.416C135.171 133.443 135.171 139.973 139.198 144L148.921 153.723C152.948 157.75 159.478 157.75 163.505 153.723L216.98 100.247C221.007 96.2204 221.007 89.6909 216.98 85.6634V85.6634Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+        <div class="text-white flex flex-col md:w-1/2 md:ml-8" id="listingContainer">
+        </div>
         <div class="w-full sm:w-2/3 md:w-1/2 mx-auto mt-6 h-72 md:h-96 lg:h-[30rem] relative">
           <div id="imgContainer" class="w-full h-full relative overflow-hidden"></div>
           <div id="buttonContainer" class="hidden">
@@ -76,21 +93,6 @@
             ></button>
           </div>
         </div>
-        <!-- <div id="loadingSymbol" class="flex mx-auto">
-          <svg
-            class="animate-spin mr-3 mt-24"
-            width="48"
-            height="48"
-            viewBox="0 0 220 220"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M216.98 85.6634L207.257 75.9409C203.23 71.9134 196.7 71.9134 192.673 75.9409L190.242 78.3716L141.628 29.7581L144.059 27.3273C148.087 23.2999 148.087 16.7704 144.059 12.7433L134.337 3.02035C130.309 -1.00711 123.78 -1.00711 119.753 3.02035L66.2776 56.4954C62.2501 60.5229 62.2501 67.0524 66.2776 71.0794L76.0001 80.802C80.0276 84.8294 86.5571 84.8294 90.5842 80.802L93.0149 78.3712L110.03 95.386L75.2078 130.208L72.777 127.777C67.4072 122.407 58.7013 122.407 53.3315 127.777L4.02748 177.082C-1.34233 182.452 -1.34233 191.158 4.02748 196.528L23.473 215.973C28.8428 221.343 37.5487 221.343 42.9185 215.973L92.223 166.669C97.5928 161.299 97.5928 152.593 92.223 147.223L89.7922 144.792L124.614 109.97L141.629 126.985L139.198 129.416C135.171 133.443 135.171 139.973 139.198 144L148.921 153.723C152.948 157.75 159.478 157.75 163.505 153.723L216.98 100.247C221.007 96.2204 221.007 89.6909 216.98 85.6634V85.6634Z"
-              fill="white"
-            />
-          </svg>
-        </div> -->
       </div>
       <div class="mt-16 max-w-[90%] lg:max-w-6xl mx-auto text-white">
         <p class="border-b border-b-stone-600 p-2 text-xl">Bidding history:</p>

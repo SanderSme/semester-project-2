@@ -15,6 +15,8 @@ const listingContainer = document.querySelector('#listingContainer');
 const imgContainer = document.querySelector('#imgContainer');
 const buttonContainer = document.querySelector('#buttonContainer');
 
+const detailsErrorMessage = document.querySelector("#detailsErrorMessage")
+
 const placeBidOverlay = document.querySelector('#placeBidOverlay');
 const placeBidBtn = document.querySelector('#placeBidBtn');
 const bidAmountToLowMessage = document.querySelector('#bidAmountToLowMessage');
@@ -39,6 +41,8 @@ async function getPostByID() {
       Authorization: `Bearer ${accessToken}`,
     },
   });
+  if(response.ok) {
+    loadingSymbol.classList.add('hidden')
   const data = await response.json();
   let postTitle = data.title;
   if (!data.title) {
@@ -267,6 +271,11 @@ async function getPostByID() {
     placeOrderBtn.classList.add('cursor-no-drop');
     placeOrderBtn.disabled = true;
   }
+} else {
+  const error = await response.json()
+  const errorMessage = error.errors[0].message
+  detailsErrorMessage.innerHTML = errorMessage
+}
 }
 
 placeBidOverlay.addEventListener('submit', function (event) {
