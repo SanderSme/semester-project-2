@@ -83,7 +83,7 @@ async function displayProfileInfo() {
     const data = await response.json();
     let profileAvatar = data.avatar;
     if (!data.avatar) {
-      profileAvatar = '/img/userimg.svg';
+      profileAvatar = '/userimg.svg';
     }
     const profileName = data.name;
     const profileEmail = data.email;
