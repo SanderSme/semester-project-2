@@ -89,8 +89,8 @@ async function displayProfileInfo() {
     const profileEmail = data.email;
     const profileCredits = data.credits;
     profileInfoContainer.innerHTML = `<div class="flex flex-col">
-        <div class="w-52 h-52">
-        <img src="${profileAvatar}" alt="profile-pic" class="rounded-full h-full w-full object-cover" />
+        <div class="w-52 h-52 rounded-full">
+    <img src="${profileAvatar}" alt="profile-picture" class="rounded-full h-full w-full object-cover" />
       </div>
         <button type="button" id="changeAvatarBtn" class="text-center mt-2 hover:underline">Change Avatar</button>
       </div>
