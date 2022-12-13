@@ -2,6 +2,9 @@ module.exports = {
   content: ['./*.{html,js}', './js/*.js', './js/*/*.js'],
 
   theme: {
+    fontFamily : {
+      body: ['Merriweather', 'serif']
+    },
     screens: {
       sm: '640px',
       // => @media (min-width: 640px) { ... }

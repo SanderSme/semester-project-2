@@ -24,8 +24,8 @@ const userListingsContainer = document.querySelector('#userListingsContainer');
 const userBidsContainer = document.querySelector('#userBidsContainer');
 
 const noListingsMessage = document.querySelector('#noListingsMessage');
-const loadingSymbol = document.querySelector("#loadingSymbol")
-const loadingSymbol2 = document.querySelector("#loadingSymbol2")
+const loadingSymbol = document.querySelector('#loadingSymbol');
+const loadingSymbol2 = document.querySelector('#loadingSymbol2');
 
 const deletePopup = document.querySelector('#deletePopup');
 const deleteBtn = document.querySelector('#deleteBtn');
@@ -105,15 +105,15 @@ async function displayProfileInfo() {
   }
 }
 
-  const editTitle = document.querySelector('#editTitle');
+const editTitle = document.querySelector('#editTitle');
 
-  const editDescription = document.querySelector('#editDescription');
+const editDescription = document.querySelector('#editDescription');
 
-  const editTags = document.querySelector('#editTags');
+const editTags = document.querySelector('#editTags');
 
-  const editImage = document.querySelector('#editImage');
-  const editImage2 = document.querySelector('#editImage2');
-  const editImage3 = document.querySelector('#editImage3');
+const editImage = document.querySelector('#editImage');
+const editImage2 = document.querySelector('#editImage2');
+const editImage3 = document.querySelector('#editImage3');
 
 async function displayUserListings() {
   const response = await fetch(USER_POSTS_API_URL, {
@@ -125,7 +125,7 @@ async function displayUserListings() {
   });
 
   if (response.ok) {
-    loadingSymbol.classList.add('hidden')
+    loadingSymbol.classList.add('hidden');
     const data = await response.json();
     if (!data.length) {
       noListingsMessage.classList.remove('hidden');
@@ -186,7 +186,7 @@ displayUserListings().then(() => {
   const deletePostErrorMessage = document.querySelector('#deletePostErrorMessage');
 
   const editTitleErrorMessage = document.querySelector('#editTitleErrorMessage');
-  
+
   const editImageErrorMessage = document.querySelector('#editImageErrorMessage');
   const editImage2ErrorMessage = document.querySelector('#editImage2ErrorMessage');
   const editImage3ErrorMessage = document.querySelector('#editImage3ErrorMessage');
@@ -312,7 +312,7 @@ async function displayUserBids() {
   });
 
   if (response.ok) {
-    loadingSymbol2.classList.add('hidden')
+    loadingSymbol2.classList.add('hidden');
     const data = await response.json();
     if (!data.length) {
       noBidsMessage.classList.remove('hidden');
