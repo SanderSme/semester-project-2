@@ -1,4 +1,4 @@
-# Project Name :moneybag: :gavel:
+# Project Name :moneybag: :hammer:
 
 auctiON
 
