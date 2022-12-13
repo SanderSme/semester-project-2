@@ -8,7 +8,7 @@ function createHeader() {
     let avatar = getUserAvatar();
     let userAvatar = `<img src="${avatar}" alt="profile-pic" class="h-full w-full rounded-full" />`;
     if (!avatar) {
-      userAvatar = `<img src="/img/userimg.svg" alt="profile-pic" class="h-full w-full object-cover" />`;
+      userAvatar = `<img src="/userimg.svg" alt="profile-pic" class="h-full w-full object-cover" />`;
     }
     const userCredits = getUserCredits();
     let userInfoContent;
