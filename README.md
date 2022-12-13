@@ -1,3 +1,5 @@
+![Auction site hero banner](img/README.png)
+
 # auctiON :moneybag: :hammer:
 
 auctiON
