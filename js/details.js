@@ -1,7 +1,6 @@
 import { getToken, updateLocalStorrage } from './utils/storage';
 import { GET_POSTS_API_URL, PROFILE_API_URL } from './settings/api';
 import { splitIntoArray } from './utils/countDown';
-import { list } from 'postcss';
 import { carouselFunction } from './utils/carousel';
 
 const params = window.location.search;
@@ -68,11 +67,7 @@ async function getPostByID() {
       buttonContainer.classList.add('hidden');
     }
     if (!data.media[0]) {
-      imgContainer.innerHTML = `<img
-    src="./img/stock-img.svg"
-    alt="${postTitle}"
-    class="mt-8 md:mt-0 rounded-xl w-full mx-auto md:h-full md:max-h-96 md:max-w-sm lg:max-w-none lg:max-h-screen"
-  />`;
+      imgContainer.innerHTML = `<div class="bg-[url('./img/stock-img.svg')] mt-8 md:mt-0 rounded-xl w-full mx-auto h-full bg-no-repeat bg-contain bg-center"></div>`
       buttonContainer.classList.add('hidden');
     }
     function displayTags() {
