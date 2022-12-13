@@ -23,11 +23,6 @@ searchBar.addEventListener('keyup', (e) => {
   displayPosts(filteredPosts);
 });
 
-postsContainer.addEventListener('click', () => {
-  dropdownSearch.classList.add('hidden');
-  postsContainer.classList.remove('blur-sm');
-})
-
 oldBtn.addEventListener('click', () => {
   GET_POSTS_URL = `${GET_POSTS_API_URL}?sort=created&sortOrder=asc&_bids=true`;
   oldBtn.classList.remove('opacity-30');
