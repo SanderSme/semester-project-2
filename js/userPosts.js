@@ -34,6 +34,7 @@ const stopDeleteBtn = document.querySelector('#stopDeleteBtn');
 const editPostForm = document.querySelector('#editPostForm');
 const editPostMediaInputs = document.querySelectorAll('.editPostMedia');
 const stopEditPostBtn = document.querySelector('#stopEditPostBtn');
+const avatarErrorMessage = document.querySelector('#avatarErrorMessage');
 
 changeAvatarForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -301,6 +302,8 @@ displayUserListings().then(() => {
     });
   }
 });
+
+const noBidsMessage = document.querySelector('#noBidsMessage');
 
 async function displayUserBids() {
   const response = await fetch(USER_BIDS_API_URL, {

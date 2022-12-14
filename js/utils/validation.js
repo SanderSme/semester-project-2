@@ -27,7 +27,7 @@ function isValidUrl(string) {
 }
 
 function validateUsername(userName) {
-  const nameRegex = /^[a-zA-Z\_]+$/;
+  const nameRegex = /^[a-zA-Z_]+$/;
   return userName.match(nameRegex) ? true : false;
 }
 

@@ -93,7 +93,6 @@ signUpForm.addEventListener('submit', function (event) {
         body: JSON.stringify(userData),
       });
       if (response.ok) {
-        const data = await response.json();
         location.href = '../login.html';
       } else {
         const err = await response.json();

@@ -20,9 +20,8 @@ To use the website, you'll need a modern web browser and an internet connection.
 
 To run the project locally, you'll need to have [VITE](https://github.com/vitejs/vite) installed on your machine. If you already have VITE installed, you can run the project with the following commands:
 
-```npm install```
-```npm run dev```
-
+`npm install`
+`npm run dev`
 
 ## Contribute :handshake:
 

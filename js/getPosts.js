@@ -12,7 +12,6 @@ const newBtn = document.querySelector('#newBtn');
 const oldBtn = document.querySelector('#oldBtn');
 
 const searchBar = document.querySelector('#searchBar');
-const dropdownSearch = document.querySelector('#dropdownSearch');
 
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
