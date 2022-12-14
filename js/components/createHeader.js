@@ -19,7 +19,7 @@ function createHeader() {
     dropdownMenu = `<ul class="w-11/12 mx-auto p-6">
       <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
       <li class="my-6 text-xl hover:underline"><a href="./profile.html">Profile</a></li>
-      <li class="my-6 text-xl hover:underline"><a href="./list-item.html">Products</a></li>
+      <li class="my-6 text-xl hover:underline"><a href="./list-item.html">List Item</a></li>
     </ul>`;
     if (userName) {
       userInfoContent = `<a href="profile.html" class="h-10 w-10">
@@ -32,7 +32,7 @@ function createHeader() {
       dropdownMenu = `<ul class="w-11/12 mx-auto p-6">
       <li class="my-6 text-xl hover:underline"><a href="./index.html">Home</a></li>
       <li class="my-6 text-xl hover:underline"><a href="./profile.html">Profile</a></li>
-      <li class="my-6 text-xl hover:underline"><a href="./list-item.html">Products</a></li>
+      <li class="my-6 text-xl hover:underline"><a href="./list-item.html">List Item</a></li>
       <li class="my-6 text-xl"><button type="button" class="hover:underline logOutBtn">Log Out</button></li>
     </ul>`;
     }
